@@ -1,0 +1,236 @@
+﻿//NORMAL SHIT
+//Primaries
+Amprex
+Attica
+Boltor
+Braton
+Burston
+Buzlok
+Cernos
+Corvas
+Daikyu
+Dera
+Dera Vandal
+Drakgoon
+Dual Decurion
+Fluctus
+Glaxion
+Grakata
+Grinlok
+Hek
+Hind
+Karak
+Kohm
+Latron
+Miter
+MK1-Braton
+MK1-Paris
+MK1-Strun
+Mutalist Quanta
+Opticor
+Panthera
+Paracyst
+Paris
+Penta
+Phage
+Quanta
+Rakta Cernos
+Sobek
+Soma
+Strun
+Sybaris
+Tetra
+Tiberon
+Tigris
+Tonkor
+Vectis
+Velocitus
+Vulkar
+Zhuge
+
+//Secondaries
+Afuris
+Akbolto
+Akbronco
+Akjagara
+Aklato
+Aklex
+Akmagnus
+Aksomati
+Akstiletto
+Akvasto
+Akzani
+Angstrum
+Atomos
+Ballistica
+Bolto
+Bronco
+Castanas
+Cestra
+Dual Cestra
+Furis
+Gammacor
+Hikou
+Kohmak
+Kraken
+Kunai
+Lato
+Lex
+Magnus
+Marelok
+MK1-Furis
+MK1-Kunai
+Nukor
+Pyrana
+Sicarus
+Stug
+Twin Gremlins
+Twin Vipers
+Tysis
+Vasto
+Viper
+
+//Melee
+Amphis
+Ankryos
+Atterax
+Bo
+Boltace
+Centaur
+Dragon Nikana
+Dual Cleavers
+Dual Ether
+Dual Heat Swords
+Dual Kamas
+Dual Raza
+Dual Skana
+Dual Zoren
+Ether Reaper
+Ether Sword
+Fang
+Fragor
+Furax
+Galentine
+Glaive
+Gram
+Halikar
+Heat Dagger
+Jag Kittag
+Kama
+Karyst
+Kestrel
+Kogake
+Kronen
+Lecta
+Magistar
+Mire
+MK1-Bo
+MK1-Furax
+Nami Skyla
+Nami Solo
+Nikana
+Obex
+Onorix
+Orthos
+Rathbone
+Redeemer
+Ripkas
+Scindo
+Serro
+Silva and Aegis
+Skana
+Telos Boltace
+Tipedo
+Tonbo
+Venka
+
+//PRIME JUNK
+//Primaries
+Boar Prime
+Boltor Prime
+Braton Prime
+Burston Prime
+Cernos Prime
+Latron Prime
+Paris Prime
+Soma Prime
+Tigris Prime
+Vectis Prime
+
+//Secondaries
+Akbronco Prime
+Aklex Prime
+Akstiletto Prime
+Bronco Prime
+Hikou Prime
+Lato Prime
+Lex Prime
+Sicarus Prime
+Spira Prime
+Vasto prime
+
+//Melee
+Ankyros Prime
+Bo Prime
+Dakra Prime
+Dual Kamas Prime
+Fang Prime
+Fragor Prime
+Galantine Prime
+Glaive Prime
+Nikana Prime
+Orthos Prime
+Reaper Prime
+Scindo Prime
+Skana Prime
+Venka Prime
+
+//WARFRAMES SKOOM
+//FARM FRAMES
+Ash
+Atlas
+Banshee
+Chroma
+Ember
+Equinox
+Excalibur
+Frost
+Hydroid
+Inaros
+Ivara
+Limbo
+Loki
+Mag
+Mesa
+Mirage
+Nekros
+Nezha
+Nidus
+Nova
+Nyx
+Oberon
+Rhino
+Saryn
+Titania
+Trinity
+Valkyr
+Vauban
+Volt
+Wukong
+Zephyr
+//PRIME ASS
+Ash Prime
+Ember Prime
+Excalibur Prime
+Frost Prime
+Loki Prime
+Mag Prime
+Nekros Prime
+Nova Prime
+Nyx Prime
+Rhino Prime
+Saryn Prime
+Trinity Prime
+Valkyr Prime
+Vauban Prime
+Volt Prime

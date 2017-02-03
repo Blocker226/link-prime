@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+  <Product Id="*" Name="Link Prime" Language="1033" Version="1.0.3" Manufacturer="Blocker226" UpgradeCode="58f33a52-fe63-45df-9770-c8ae2d331842">
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate EmbedCab="yes"/>
+
+    <Feature Id="Complete" Title="Link Prime" Description="Install all the required files." Display="expand" Level="1" ConfigurableDirectory="TARGETDIR" InstallDefault="local">
+      <ComponentGroupRef Id="ProductComponents" />
+      <ComponentGroupRef Id="ImageComponents" />
+      <ComponentRef Id="ApplicationShortcut" />
+      <ComponentRef Id="InstalledFolder" />
+    </Feature>
+    <UI>
+      <UIRef Id="WixUI_Minimal" />
+      <UIRef Id="WixUI_ErrorProgressText" />
+    </UI>
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+
+    <Icon Id="icon.ico" SourceFile="$(var.Discord Link Prime.ProjectDir)\icon.ico"/>
+    <Property Id="ARPPRODUCTICON" Value="icon.ico" />
+
+    <Property Id="INSTALLFOLDER" Secure="yes">
+      <RegistrySearch Key="Software\Blocker226\LinkPrime" Root="HKCU" Type="raw" Id="APPLICATIONFOLDER_REGSEARCH" Name="Path" />
+    </Property>
+    <Property Id="SHORTCUTFOLDER" Secure="yes">
+      <RegistrySearch Key="Software\Blocker226\LinkPrime" Root="HKCU" Type="raw" Id="SHORTCUTFOLDER_REGSEARCH" Name="Path2" />
+    </Property>
+
+    <DirectoryRef Id="ApplicationProgramsFolder">
+      <Component Id="ApplicationShortcut" Guid="F7D67577-320C-4224-98B5-7982622BA88A">
+        <Shortcut Id="ApplicationStartMenuShortcut"
+                  Name="Discord Prime Link"
+                  Description="Discord Warframe Bot"
+                  Target="[#Discord_Link_Prime.exe]"
+                  WorkingDirectory="APPLICATIONROOTDIRECTORY"/>
+        <RemoveFolder On="uninstall" Id="ApplicationShortcut"/>
+        <RegistryValue Root="HKCU" Key="Software\Blocker226\LinkPrime" Name="installed" Type="string" Value="[SHORTCUTFOLDER]" KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+    <DirectoryRef Id="INSTALLFOLDER">
+      <Component Id="InstalledFolder" Guid="DC0377B4-2825-440F-B104-340F5EB806CF">
+        <RemoveFolder On="uninstall" Id="InstalledFolder"/>
+        <util:RemoveFolderEx On="uninstall" Property="INSTALLFOLDER"/>
+        <RegistryValue Root="HKCU" Key="Software\Microsoft\LinkPrime" Name="location" Type="string" Value="[APPLICATIONFOLDER]" KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+
+  </Product>
+
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="Discord Prime Link"/>
+      </Directory>
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="Discord Link Prime">
+          <Directory Id="IMAGEFOLDER" Name="Images" />
+        </Directory>
+      </Directory>
+    </Directory>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+      <Component Id="Discord_Link_Prime.exe" Guid="3468A708-EF29-4C7C-95CC-581D605B110C">
+        <File Id ="Discord_Link_Prime.exe" Source="$(var.Discord Link Prime.TargetPath)" Checksum="yes" KeyPath="yes"/>
+      </Component>
+      <Component Id="cmpCA7ED8358AA8A2CBD7429A16FBEB84BF" Guid="{A447C8B7-E72E-4A0E-AC38-95D42B49A737}">
+        <File Id="filD59688E9152BE3022D4AF2C7977AF8F4" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Discord Link Prime.application" />
+      </Component>
+      <Component Id="cmp30B500495511FA3C34227FFEDA6CF41B" Guid="{3382813B-C7A1-498D-BC9E-2E843F9AE72E}">
+        <File Id="fil17C2A974E56B332AC02D4AAF46C584D3" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Discord Link Prime.exe.config" />
+      </Component>
+      <Component Id="cmp0DFF3D366BB4CCFAB3F476C6760D8683" Guid="{E586E0E2-EED6-47F3-BD49-C43F24F12A04}">
+        <File Id="fil08C24EBE92CF6B6D4C2FF832AEFDA84F" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Discord Link Prime.exe.manifest" />
+      </Component>
+      <Component Id="cmp68DD494E0425C41F8F97A4B1CF84B3FE" Guid="{70019B43-EAA8-44EB-9136-4310429E6B97}">
+        <File Id="filEE384E2BBA6451B89602C3AECC5DD0DD" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Discord.Net.Commands.dll" />
+      </Component>
+      <Component Id="cmp1D31A94F22ACAF10F38682CB8C4581DE" Guid="{AD8AEAF2-0577-43E5-BB55-20CB5E3EC3A5}">
+        <File Id="fil5B2B847136EC00B6FF837C56A5547253" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Discord.Net.Commands.xml" />
+      </Component>
+      <Component Id="cmpC4F6C60E87920783AF597164FFBB088C" Guid="{0F9E6C5B-8F20-400E-82A7-24BEAA1BE763}">
+        <File Id="fil7093B3A435DB6A128B4BDFD4016DF410" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Discord.Net.Core.dll" />
+      </Component>
+      <Component Id="cmp596E79D2EA78EFB71845269E230DF675" Guid="{10307458-3725-428B-B495-1C8BFEB294A0}">
+        <File Id="fil71C9126A7CE61E1EBDFB9812FF6DEC82" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Discord.Net.Core.xml" />
+      </Component>
+      <Component Id="cmp3A68ED8E082F1113736A8472E2EFD0FE" Guid="{BF1CCD10-A028-4C0E-851D-DD9382656E98}">
+        <File Id="filFD80742D48D389C7B8CF241FF2D40CD2" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Discord.Net.Rest.dll" />
+      </Component>
+      <Component Id="cmpEE921F019F3A7ACA9A3906091D1A1C6F" Guid="{A8DCE3DF-99FA-4A87-986E-8555BF04F905}">
+        <File Id="fil8D9695EFD2795B47EF8631E323D1493B" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Discord.Net.Rest.xml" />
+      </Component>
+      <Component Id="cmp53C5AABF5AE671F6F00CA0594E940021" Guid="{B739EA2A-FFA8-44D3-BF4A-59762769D96E}">
+        <File Id="fil9545475E00634C55D8636829C5A00FA7" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Discord.Net.WebSocket.dll" />
+      </Component>
+      <Component Id="cmp8200ED15599666E3E5CB903BBF373B7D" Guid="{453380E8-EC80-4082-A5ED-DC76BDB78EAF}">
+        <File Id="fil950458D9143E94E08568C1DFDEDED730" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Discord.Net.WebSocket.xml" />
+      </Component>
+      <Component Id="cmp25AD6DF8E8DD103BBDAE1C97187B6432" Guid="{0A96B033-C5CB-487F-B16D-91190A5B2208}">
+        <File Id="filF176C54E0971E417BAC7CC0272A58A7B" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Help.txt" />
+      </Component>
+      <Component Id="cmp46AA54CE473C021FA32B67AD320273A7" Guid="{267073F8-4DB4-47E5-A0CF-373640C52FF7}">
+        <File Id="fil2875B3B8321B13FAAA76B9C0B168851D" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Info.txt" />
+      </Component>
+      <Component Id="cmpC089979D7EDD0520871FCF59E4512F6A" Guid="{3C898661-9B12-477A-BAEE-7DA4D091E287}">
+        <File Id="fil69885EF287CDAEE15C09BE435AEC1160" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Microsoft.Win32.Primitives.dll" />
+      </Component>
+      <Component Id="cmp630277B1C07C292C174A07FA399092C2" Guid="{20834E24-56BB-474D-A5F3-983BD841E6F4}">
+        <File Id="fil90AF109335AD14ECA08BEB819D2C6785" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Namelist.txt" />
+      </Component>
+      <Component Id="cmpBC4FC00A26E7D32479D42D3411317FC5" Guid="{6B4FA251-03EC-44EF-9FC7-AAAE18974C3C}">
+        <File Id="fil90A8AAD9FC612906D405476D61CEA3F4" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Newtonsoft.Json.dll" />
+      </Component>
+      <Component Id="cmp125C379E185231EFADA4CB4301BD0A9E" Guid="{3CD21AC5-8A2C-49E7-A1D0-D670CAB6E887}">
+        <File Id="fil3A2F44A7730E98D18E0948B3261DFABD" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Newtonsoft.Json.xml" />
+      </Component>
+      <Component Id="cmp5BF82A49794EF8CA80B3603A0E77FC35" Guid="{FE5D0B2C-6007-4BB0-9F16-30092217B8F1}">
+        <File Id="filAFD0CC30CB2E6DD52C314025EFBB3EF7" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\System.AppContext.dll" />
+      </Component>
+      <Component Id="cmp969F6EDF2594F3809D7A716387BF8894" Guid="{E4BB8A58-4305-4167-B291-D81093A8A52A}">
+        <File Id="fil60E3CB228DB7CBE488269EDFC1321CC6" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\System.Collections.Immutable.dll" />
+      </Component>
+      <Component Id="cmp22B85696DEA0802F0E1B04E5F06007B8" Guid="{0BC37CD8-3585-4556-B573-BC2B43B14FC1}">
+        <File Id="fil77CF1FA276A596B830A84030D8963B57" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\System.Collections.Immutable.xml" />
+      </Component>
+      <Component Id="cmp1A01EFD00F1DAF10CE06F8196357F24C" Guid="{9F34ED84-B3C6-4801-AB89-E619C8C5DD3C}">
+        <File Id="fil08A6ABF18A6A31D6C7924DD13873F17E" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\System.Console.dll" />
+      </Component>
+      <Component Id="cmpE722E076AB8486E4A4F24B01268787A2" Guid="{905FFA66-6832-4416-8529-F2AB2DD70E00}">
+        <File Id="fil92FE767CE7126933F4E9DEEEBAAE9354" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\System.Diagnostics.DiagnosticSource.dll" />
+      </Component>
+      <Component Id="cmp299758116F7BAC310E78738F4C506766" Guid="{D6B2CEDE-9950-4B81-BDDA-E441AD728795}">
+        <File Id="fil660A99480C59BF3844A26EBA1559FEDA" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\System.Diagnostics.DiagnosticSource.xml" />
+      </Component>
+      <Component Id="cmpF2CFC77F0487C42E6C597124620175D0" Guid="{556422BF-AEF2-41C2-89F3-5F2FE45562C6}">
+        <File Id="filB1DA3C706CDD3EB9DD5FAEE10E17A1EC" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\System.Globalization.Calendars.dll" />
+      </Component>
+      <Component Id="cmpACDBAE59B9584DAADFCFCDB7304FC635" Guid="{CF6C360A-A7CF-4C07-A09E-C0BD3739CFC3}">
+        <File Id="fil62A039AEAD67D242294347423492FF6D" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\System.Interactive.Async.dll" />
+      </Component>
+      <Component Id="cmp605F4F648C3D1C70D3021CF33522C8AC" Guid="{911BDFC8-D154-4080-AC39-38539D9B9B35}">
+        <File Id="fil6D9BBEB2747CBA27650B093EE1946229" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\System.Interactive.Async.xml" />
+      </Component>
+      <Component Id="cmpC8D343DED6ECA227B78780388C7AA77C" Guid="{BF00E7CD-EA0B-44A2-B854-F98AE0CBE837}">
+        <File Id="fil8C21BB6ED9A67550B3F3EE8EF35E5A89" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\System.IO.Compression.dll" />
+      </Component>
+      <Component Id="cmpD40621D43FCB57C24FE91D5292CDCA60" Guid="{2AFAF18C-1053-4D9E-AF91-2C74A19C67B1}">
+        <File Id="fil58D577100F63265F0448602DFD48190C" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\System.IO.Compression.ZipFile.dll" />
+      </Component>
+      <Component Id="cmp2BF489548413875B5E6C82837FCD954F" Guid="{AA20BC74-F6A1-4CFF-B265-E35CCEDC723F}">
+        <File Id="filB910A291C5575D86F028725A2C33BF2D" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\System.IO.FileSystem.dll" />
+      </Component>
+      <Component Id="cmpC96839737F0D0575D352C1AE13A73E26" Guid="{52FC14FE-30C8-482A-AF17-57307E1CBAD0}">
+        <File Id="fil02F9A4228ADE0C77AF34898B47FD1723" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\System.IO.FileSystem.Primitives.dll" />
+      </Component>
+      <Component Id="cmpBA5ABAFBBC1B2CC2232B3287ABE89965" Guid="{748E5ABE-05AC-4B96-BE23-EFCB293750B5}">
+        <File Id="fil7D48B04FDEE4653060C375A94010A762" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\System.Net.Http.dll" />
+      </Component>
+      <Component Id="cmp8487DBCD10F6EA164525782F92DE4F4F" Guid="{794A9DE9-4BBC-4A3F-B272-5C17BAEBA13D}">
+        <File Id="fil69D9F4812C174BFB653C73FDA9A444E0" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\System.Net.NameResolution.dll" />
+      </Component>
+      <Component Id="cmp35FB771C91E6D09AC7AD31EA6BD82D48" Guid="{C7377D3E-4CF4-4B0C-A32C-FAFC6D68FCAF}">
+        <File Id="fil823B0C5D79C138C9B43DE503AE851AF3" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\System.Net.Sockets.dll" />
+      </Component>
+      <Component Id="cmp68954BEF36096052C3124B7F9EF02351" Guid="{300A8532-28C4-41B1-850F-EACF8AF40C84}">
+        <File Id="filBE4907C935596CA9CAA2A7AA9AB25169" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\System.Net.WebSockets.Client.dll" />
+      </Component>
+      <Component Id="cmpA3D72A47568CFB72A8579DA365A9694A" Guid="{0A218905-4CBC-40C6-809A-764EF8056C27}">
+        <File Id="fil21106B04138595285E4063BA0375F731" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\System.Net.WebSockets.dll" />
+      </Component>
+      <Component Id="cmp11FDD7837E3686618A8029176A611E38" Guid="{E89E6E8C-0FE0-4486-A7D4-B2DBEBF66694}">
+        <File Id="fil43FDDFACC38DCF385E1070ABFC9FF8BD" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\System.Runtime.InteropServices.RuntimeInformation.dll" />
+      </Component>
+      <Component Id="cmp552DDD4A29039B8C3A99A908722A24F8" Guid="{99B43D20-35E5-4F23-8E04-929ACCFDDBC1}">
+        <File Id="fil4EF07533CCADC5D11E070B55437037C4" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\System.Runtime.Serialization.Primitives.dll" />
+      </Component>
+      <Component Id="cmpFF30060800C65B79967082C32327291C" Guid="{53FABE61-EC68-4BE6-9E95-F870AA44DCB0}">
+        <File Id="filAB211F3F0ECB04AF6C2378C73893A0C8" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\System.Security.Cryptography.Algorithms.dll" />
+      </Component>
+      <Component Id="cmp29603EF04B0BDD3AB6C82CAA97838E8B" Guid="{ACF06AFF-55C1-4F9B-A66A-C15EE1B1712E}">
+        <File Id="filED8707AB753EEF87C2288DCB64CF7A12" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\System.Security.Cryptography.Encoding.dll" />
+      </Component>
+      <Component Id="cmp0136E6693E0DF16DBA25B9082AEA0615" Guid="{DC783BB3-930D-4F33-A220-146E8A7E1827}">
+        <File Id="fil25474CD58A18AB4C2CD00F08A6BC9775" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\System.Security.Cryptography.Primitives.dll" />
+      </Component>
+      <Component Id="cmp5A1F20CF9AD2DA0DF26622F317779E8C" Guid="{79C1EDD6-F768-47EA-88B3-82D47F98751A}">
+        <File Id="fil442CB099348F299818A47DAF4107BAD6" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\System.Security.Cryptography.X509Certificates.dll" />
+      </Component>
+    </ComponentGroup>
+    <ComponentGroup Id="ImageComponents" Directory="IMAGEFOLDER">
+      <Component Id="cmp2472C496E97FA7ED79C1E315F489F820" Guid="{B8848122-82AF-40C9-9109-63DD69DF673F}">
+        <File Id="filC140892DB43A99E31CFBD01FEDDD33B0" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Afuris.png" />
+      </Component>
+      <Component Id="cmpBD63A92B554318F1D3C09A1ACE788928" Guid="{15EF6BE0-08E5-48B6-8F67-140F9F6F5BFE}">
+        <File Id="filED5B5702ECF4F2875E7A73E1901111B5" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Akbolto.png" />
+      </Component>
+      <Component Id="cmp5FF88C8732B9398E9846B181244A41A6" Guid="{1C2BEEF9-BA99-4C48-B276-423EC92C7945}">
+        <File Id="filECF85D9D20021E5DEE2B6A3EB6E9BF36" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Akbronco Prime.png" />
+      </Component>
+      <Component Id="cmp943C544B205BE5D6BE7EDA12ED734BAA" Guid="{5B4B6272-ED3E-4417-9E50-3BB1AB503739}">
+        <File Id="fil850B776E522EB94FCD305CCA2CEA599B" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Akbronco.png" />
+      </Component>
+      <Component Id="cmpBD3F86B98F412D0E776CAA21833A89CD" Guid="{6E9C0EC8-956F-4BFA-9724-BF48A6EE2BCE}">
+        <File Id="filFC5DAF811F1E91162DADCB22CCA5A692" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Aklex Prime.png" />
+      </Component>
+      <Component Id="cmp74A822F91911B6F9EDBC6AC54D47DEE7" Guid="{44D314E2-9CA1-4358-8E5A-FE5AFBF64167}">
+        <File Id="fil38318EB8D0869C620B132D042BF62BCA" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Akstiletto Prime.png" />
+      </Component>
+      <Component Id="cmp1B8EA9B571D8AAC8C0FD4B307CF8FFAD" Guid="{C9BD58F6-0D5A-40A4-A83F-DAF2C1F3F63B}">
+        <File Id="filDED6723C990EEE1E0CFA58DF494DBFFF" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Akvasto.png" />
+      </Component>
+      <Component Id="cmpD4DDB185B35D72AF4EB56EBC8921BDA8" Guid="{1CDED37D-DE35-4804-AED0-E0D7F4D7A56E}">
+        <File Id="fil690DC0028FBC5852C11012E217F086BF" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Amprex.png" />
+      </Component>
+      <Component Id="cmp7F665F4045099CCD4AA4327064AAA242" Guid="{8F994F3E-4F56-4AEF-927F-988394862994}">
+        <File Id="filC53EB8CE6DB649B53F66A3F1C20E2741" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Ankryos Prime.png" />
+      </Component>
+      <Component Id="cmp124055AF6E6BE58C874BEE7C63BF75B1" Guid="{A47962B3-F83A-4444-A659-912EF8B805ED}">
+        <File Id="fil158D3C98691119C0D8397C34021AE3DD" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Attica.png" />
+      </Component>
+      <Component Id="cmpF01A7B1CB31BF21A89A25D3112698A5A" Guid="{A726DF05-A7F3-49A0-833B-788385FD7916}">
+        <File Id="fil2A860EB7D44234AAA2558BDD90D42F2C" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Bo Prime.png" />
+      </Component>
+      <Component Id="cmp448F03484D25B72F29744BFDD98B9384" Guid="{E4B3E905-8EDF-42E3-BEAF-CE6641732420}">
+        <File Id="fil1B0B24B12C365B07AA74EF2925FEF959" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Boar Prime.png" />
+      </Component>
+      <Component Id="cmp1571661C85451C6A407731D95089351C" Guid="{9E6424D0-9629-4778-9441-CA76FAD7C9EF}">
+        <File Id="filD9B0250F1A066352DAFB650B637EC0B6" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Boltor Prime.png" />
+      </Component>
+      <Component Id="cmp2D8A5994FCF463B38623D59F9A2DE390" Guid="{B02855B2-2E87-4E1C-B426-D207119C1506}">
+        <File Id="filBF574935FA2A61975E2607C90B003959" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Boltor.png" />
+      </Component>
+      <Component Id="cmpCAD0DA194ACD0589E3DAA3E77AA887A5" Guid="{115BDFD1-2A8D-4DB2-9339-55C4D7DC608B}">
+        <File Id="filC5811CC667B2DFDB566A6DCABA6B3942" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Braton Prime.png" />
+      </Component>
+      <Component Id="cmp3D71B4F5FBA13034FD565EA29718CDBE" Guid="{39CBA3A9-82AF-4D3F-9E54-FBE45AEB375A}">
+        <File Id="filB42495D16A8787154C1BE5E41A450F5D" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Braton.png" />
+      </Component>
+      <Component Id="cmpEAE4A069B493EFDBB6ADADE9065163CE" Guid="{36436C21-9B2D-41EA-8333-99482954604F}">
+        <File Id="fil0901F010277C7CE25678F3BD02C352FA" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Bronco Prime.png" />
+      </Component>
+      <Component Id="cmpB9F4DE59F3B377BDCCC05C6434BB5D50" Guid="{E7CAED5E-91A6-42D2-A9AA-5885DC3A27A6}">
+        <File Id="fil0B667E7904FE123311A5B3CF40980199" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Dakra Prime.png" />
+      </Component>
+      <Component Id="cmp505239308605D710A1654334E5A64573" Guid="{83F5C07B-642A-42BD-910F-E7741D9A69D0}">
+        <File Id="filB673C1326C467B11BE6AE51E255F934F" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Dual Kamas Prime.png" />
+      </Component>
+      <Component Id="cmp9796B3136C5DAA14474468AE780B0E4F" Guid="{F2C6494E-5DF0-4591-8607-53A0DCBB9149}">
+        <File Id="filB82CA85E3550F93A760C4E88ABCF43A6" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Fang Prime.png" />
+      </Component>
+      <Component Id="cmp24522427931D0B964CD9730765890686" Guid="{258A4B5B-512C-4BC7-86DE-808D2DBDC7AB}">
+        <File Id="filF944C839FA4DF4731E70F33612DC6138" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Fragor Prime.png" />
+      </Component>
+      <Component Id="cmp983ADD1C4396FC9B84F3F45CA474C101" Guid="{4CDD75AF-B214-4DD7-AC60-7EDE4B50563F}">
+        <File Id="fil2A0AEBAC7DE06EE58D1F2FFE6E0C221A" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Galentine Prime.png" />
+      </Component>
+      <Component Id="cmpAA21F797EA47A8F0612E7DA2E5C16305" Guid="{1808A3E1-D24E-4C11-8305-732C08060B3C}">
+        <File Id="filF749DEBD9C258AF9F21651A03F2E7786" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Glaive Prime.png" />
+      </Component>
+      <Component Id="cmpEE8D9BEC72B00F613EA50E0AD088EBDF" Guid="{D07BBDF2-EFF7-48F0-929D-E17FA213CF12}">
+        <File Id="filB4B64D42E0AFCE0ED6DC8F149C2111C0" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Hikou Prime.png" />
+      </Component>
+      <Component Id="cmp702BF33C97ACD45EE2B6B050E693B535" Guid="{80FE4C40-471D-4567-B1BD-13D2FAFAD0B8}">
+        <File Id="filFE44D08B625A0CF5E53D698D26FF1B95" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Lato Prime.png" />
+      </Component>
+      <Component Id="cmp1E2815CD65331BEF84FD332713B5EDD1" Guid="{E58A3DFF-F3DF-412B-AAB1-91214674F4BA}">
+        <File Id="filABA6ABC1B548470D768FE859F29529EB" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Lex Prime.png" />
+      </Component>
+      <Component Id="cmp1FBBB4164EBBE626FEEC9A47B03D9962" Guid="{84B6CF48-5501-4DDC-8FC3-B8BA86A385E2}">
+        <File Id="fil976D9728907FCC13B762C6ACBBC800D4" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Lex.png" />
+      </Component>
+      <Component Id="cmp0C1BD61EA937E9859B0055C43AD5EAE0" Guid="{2DBCD4AE-B276-4541-B518-7ABC63EB4C4C}">
+        <File Id="fil3216A3DA9BE9D1D14C33BC086AE5EF4F" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\MK1-Braton.png" />
+      </Component>
+      <Component Id="cmpDB5DFB788E98D6171C9155CB9EE845A5" Guid="{EB3DF22D-2352-4A5A-9548-15D6A99C8173}">
+        <File Id="filC1E0CB24028CF8ACADB6CA5D26A1DC62" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Nikana Prime.png" />
+      </Component>
+      <Component Id="cmpA1A11F137F86DCCA497EDE1CFDBFDE62" Guid="{49F81B39-DB6A-49EE-9DDE-088812EB6466}">
+        <File Id="fil078DE1566D8ACC806909D2BA0B3339AA" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Orthos Prime.png" />
+      </Component>
+      <Component Id="cmpAA7A106D49EDC9CC416F63611E897386" Guid="{85DCED66-4851-42F8-887D-67E06E438A41}">
+        <File Id="fil3DB8255221790FA65F7CFFA2AB3D81B8" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Paris.png" />
+      </Component>
+      <Component Id="cmp76F2F3016CBAFA4AC0C0189630F25004" Guid="{4F6A754B-E38F-45C0-A6F0-90A7830166BA}">
+        <File Id="fil6564DCED68437B8803A230E0D6388430" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Reaper Prime.png" />
+      </Component>
+      <Component Id="cmp32227AB387C99F6E7D8C4865E0280FBD" Guid="{9599E95D-429B-4C9B-A5CF-E8C1ECDAA90F}">
+        <File Id="fil59CA0DA4238BA561D29D71A5A28DFB1A" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Scindo Prime.png" />
+      </Component>
+      <Component Id="cmpA1B8F053066E374CBA5141172FEA8B2D" Guid="{3283F70D-82E8-40CD-9156-765B89502925}">
+        <File Id="filDBA9503CEDB1CAA1CDC56054EFC6BF96" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Sicarus Prime.png" />
+      </Component>
+      <Component Id="cmp68502A182B3A29B17DBEEDFD027A579A" Guid="{4504C90A-5F82-420C-8314-58655FB78D62}">
+        <File Id="fil9A9ED46DCBABD02028BAB2AEC27F841B" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Skana Prime.png" />
+      </Component>
+      <Component Id="cmp1E86483909555761276A8430584BBA21" Guid="{39FAC353-7EC2-47F9-80A2-F3AA90269B29}">
+        <File Id="filFD10E27FFFE9703B2F341FAFD0C674CE" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Spira Prime.png" />
+      </Component>
+      <Component Id="cmpC121D636B1732EE6BCD63405B8D540C6" Guid="{9498ACAE-91C4-4151-9425-D1578E929F8A}">
+        <File Id="fil5A3C719C37ECC4B3679C650E63ED8924" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Vasto Prime.png" />
+      </Component>
+      <Component Id="cmpB8BE77CB29DDE069B8BBE96AA20A10D0" Guid="{C6256CA4-729C-4135-995C-A808756BB0A4}">
+        <File Id="fil4D4CA0F6F3E02696FF7FB1021C5AA7C8" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Venka Prime.png" />
+      </Component>
+      <Component Id="cmpE864EFAAEFE6D5FF9A5717721C072603" Guid="{3D021352-8487-4ACF-8F13-D8C961A95EF6}">
+        <File Id="fil50EF1784A8A18C35EEF6659A7F3E4D84" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Zhuge.png" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>
