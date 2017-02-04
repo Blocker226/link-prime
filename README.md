@@ -1,4 +1,4 @@
-#Link Prime Alpha A1.0.3
+#Link Prime Alpha A1.0.4
 Designed by Blocker226#2438
 
 .NET Framework 4.6 (Discord.Net 1.0.0)
