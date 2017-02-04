@@ -30,9 +30,9 @@
     </Property>
 
     <DirectoryRef Id="ApplicationProgramsFolder">
-      <Component Id="ApplicationShortcut" Guid="F7D67577-320C-4224-98B5-7982622BA88A">
+      <Component Id="ApplicationShortcut" Guid="B6694B31-5E6D-469E-AE4E-9CE6DB083A05">
         <Shortcut Id="ApplicationStartMenuShortcut"
-                  Name="Discord Prime Link"
+                  Name="Discord Link Prime"
                   Description="Discord Warframe Bot"
                   Target="[#Discord_Link_Prime.exe]"
                   WorkingDirectory="APPLICATIONROOTDIRECTORY"/>
@@ -41,7 +41,7 @@
       </Component>
     </DirectoryRef>
     <DirectoryRef Id="INSTALLFOLDER">
-      <Component Id="InstalledFolder" Guid="DC0377B4-2825-440F-B104-340F5EB806CF">
+      <Component Id="InstalledFolder" Guid="0B03F889-0BA6-4E4C-B932-54A6CBF91D83">
         <RemoveFolder On="uninstall" Id="InstalledFolder"/>
         <util:RemoveFolderEx On="uninstall" Property="INSTALLFOLDER"/>
         <RegistryValue Root="HKCU" Key="Software\Microsoft\LinkPrime" Name="location" Type="string" Value="[APPLICATIONFOLDER]" KeyPath="yes"/>
@@ -191,124 +191,442 @@
       <Component Id="cmp5A1F20CF9AD2DA0DF26622F317779E8C" Guid="{79C1EDD6-F768-47EA-88B3-82D47F98751A}">
         <File Id="fil442CB099348F299818A47DAF4107BAD6" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\System.Security.Cryptography.X509Certificates.dll" />
       </Component>
+      <Component Id="cmp4DF0B05FA2115AA65DE3FA0E1B3FD9B4" Guid="{4A4C9330-8A72-46D0-A7B0-640C3D3CB0FA}">
+        <File Id="filF12E400DFEC0D57D6E4C637528C1DE21" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Token.txt" />
+      </Component>
     </ComponentGroup>
     <ComponentGroup Id="ImageComponents" Directory="IMAGEFOLDER">
-      <Component Id="cmp2472C496E97FA7ED79C1E315F489F820" Guid="{B8848122-82AF-40C9-9109-63DD69DF673F}">
-        <File Id="filC140892DB43A99E31CFBD01FEDDD33B0" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Afuris.png" />
+      <Component Id="cmpA53CD7EAA82445382C23635A072641E5" Guid="{074049CA-55B7-4BCC-8F1A-FB17A7B18A6F}">
+        <File Id="filCD4709F2EDEF449AD4D9DB6367ABE30B" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Acrid.png" />
       </Component>
-      <Component Id="cmpBD63A92B554318F1D3C09A1ACE788928" Guid="{15EF6BE0-08E5-48B6-8F67-140F9F6F5BFE}">
-        <File Id="filED5B5702ECF4F2875E7A73E1901111B5" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Akbolto.png" />
+      <Component Id="cmp081B45E4DF18CDBF69B4BCF66AAF8A87" Guid="{F458BD94-B909-4365-8E14-E6FF6D58CCBF}">
+        <File Id="filBD3DF946650A2803D34454B41993AF7A" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Afuris.png" />
       </Component>
-      <Component Id="cmp5FF88C8732B9398E9846B181244A41A6" Guid="{1C2BEEF9-BA99-4C48-B276-423EC92C7945}">
-        <File Id="filECF85D9D20021E5DEE2B6A3EB6E9BF36" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Akbronco Prime.png" />
+      <Component Id="cmp8063D589CC2EEA874C8A4AEBF88F1573" Guid="{E61F9F70-F509-43E0-B443-8A09E285EE76}">
+        <File Id="fil354509C22BA31C1B4D725A5F78D66CA0" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Akbolto.png" />
       </Component>
-      <Component Id="cmp943C544B205BE5D6BE7EDA12ED734BAA" Guid="{5B4B6272-ED3E-4417-9E50-3BB1AB503739}">
-        <File Id="fil850B776E522EB94FCD305CCA2CEA599B" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Akbronco.png" />
+      <Component Id="cmp4B907F15D4055D09BF229EC8F4F20B01" Guid="{3C775B7D-0FF5-4E8B-B716-62FE3481E3C5}">
+        <File Id="fil92617B7D2443A90861F33A89864261E6" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Akbronco Prime.png" />
       </Component>
-      <Component Id="cmpBD3F86B98F412D0E776CAA21833A89CD" Guid="{6E9C0EC8-956F-4BFA-9724-BF48A6EE2BCE}">
-        <File Id="filFC5DAF811F1E91162DADCB22CCA5A692" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Aklex Prime.png" />
+      <Component Id="cmpB6F39FB68FECA57BA8D5DA3B692F678E" Guid="{CC209B57-96AF-4CE7-BD0B-5557F0786EB9}">
+        <File Id="filA50F4457011DE1D724081BC65FEFF825" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Akbronco.png" />
       </Component>
-      <Component Id="cmp74A822F91911B6F9EDBC6AC54D47DEE7" Guid="{44D314E2-9CA1-4358-8E5A-FE5AFBF64167}">
-        <File Id="fil38318EB8D0869C620B132D042BF62BCA" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Akstiletto Prime.png" />
+      <Component Id="cmpB792621CDCB4CB695236FFFBA2E99558" Guid="{0A6C4CCE-5EAC-4618-9621-4A021D493CE0}">
+        <File Id="fil2D7C21E2012DA561CF6378040D212DC8" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Aklato.png" />
       </Component>
-      <Component Id="cmp1B8EA9B571D8AAC8C0FD4B307CF8FFAD" Guid="{C9BD58F6-0D5A-40A4-A83F-DAF2C1F3F63B}">
-        <File Id="filDED6723C990EEE1E0CFA58DF494DBFFF" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Akvasto.png" />
+      <Component Id="cmp5F68298CB04496DAE8FAFED8FF9B8032" Guid="{AC3C1A02-3679-4C5D-AAFB-414A5A73A48D}">
+        <File Id="fil2B48406C057686344DCAF94DD240A4B4" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Aklex Prime.png" />
       </Component>
-      <Component Id="cmpD4DDB185B35D72AF4EB56EBC8921BDA8" Guid="{1CDED37D-DE35-4804-AED0-E0D7F4D7A56E}">
-        <File Id="fil690DC0028FBC5852C11012E217F086BF" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Amprex.png" />
+      <Component Id="cmpA3A244DA995757C4E94435FDA1200DF0" Guid="{84A87461-9C64-4A08-A8BB-268B6CD1045F}">
+        <File Id="fil6C6E9295D83C050368CE01FB4DA37CD3" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Akmagnus.png" />
       </Component>
-      <Component Id="cmp7F665F4045099CCD4AA4327064AAA242" Guid="{8F994F3E-4F56-4AEF-927F-988394862994}">
-        <File Id="filC53EB8CE6DB649B53F66A3F1C20E2741" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Ankryos Prime.png" />
+      <Component Id="cmpDF5F94018C22982C0F41E0FF28EB4C87" Guid="{3E23AB66-62AD-41FB-9DD2-FC6A42BA4472}">
+        <File Id="fil23F4B7C9B4C74FBBC131CA07FCAF8787" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Aksomati.png" />
       </Component>
-      <Component Id="cmp124055AF6E6BE58C874BEE7C63BF75B1" Guid="{A47962B3-F83A-4444-A659-912EF8B805ED}">
-        <File Id="fil158D3C98691119C0D8397C34021AE3DD" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Attica.png" />
+      <Component Id="cmpD097D87139896D87715EFD0C32DAB6DF" Guid="{A1912602-CA1F-4B62-81CF-2AE8D341A979}">
+        <File Id="filB5AB0ECC1AA78E37CBA1DCBE99F28954" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Akstiletto Prime.png" />
       </Component>
-      <Component Id="cmpF01A7B1CB31BF21A89A25D3112698A5A" Guid="{A726DF05-A7F3-49A0-833B-788385FD7916}">
-        <File Id="fil2A860EB7D44234AAA2558BDD90D42F2C" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Bo Prime.png" />
+      <Component Id="cmp815A545287A366C96A39796A4DA161AB" Guid="{4AB81C52-0044-4CEE-886D-3B4799ABA96F}">
+        <File Id="fil436672BEE5E467ADACB07BAFF104D90B" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Akstiletto.png" />
       </Component>
-      <Component Id="cmp448F03484D25B72F29744BFDD98B9384" Guid="{E4B3E905-8EDF-42E3-BEAF-CE6641732420}">
-        <File Id="fil1B0B24B12C365B07AA74EF2925FEF959" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Boar Prime.png" />
+      <Component Id="cmpB027EF7015B72F3D779928ECDF88ADB3" Guid="{343651C4-0978-4633-A294-0F13CD53290F}">
+        <File Id="fil733BD5CE640C2C279390A6C252092763" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Akvasto.png" />
       </Component>
-      <Component Id="cmp1571661C85451C6A407731D95089351C" Guid="{9E6424D0-9629-4778-9441-CA76FAD7C9EF}">
-        <File Id="filD9B0250F1A066352DAFB650B637EC0B6" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Boltor Prime.png" />
+      <Component Id="cmp7D62803A2421C5E809D66BAA2EB0F960" Guid="{58A2B792-C3DF-4472-9BE3-B973A1C1CF98}">
+        <File Id="fil08414974CAC1144255B801A0F158BC42" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Amprex.png" />
       </Component>
-      <Component Id="cmp2D8A5994FCF463B38623D59F9A2DE390" Guid="{B02855B2-2E87-4E1C-B426-D207119C1506}">
-        <File Id="filBF574935FA2A61975E2607C90B003959" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Boltor.png" />
+      <Component Id="cmpF6A934FD0ABF636036C8A4D35886EA79" Guid="{D49850B7-13B3-4678-A101-EB5FE7C50DE4}">
+        <File Id="fil67BDB3E5CA86A6701FD8FFD9409DD222" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Angstrum.png" />
       </Component>
-      <Component Id="cmpCAD0DA194ACD0589E3DAA3E77AA887A5" Guid="{115BDFD1-2A8D-4DB2-9339-55C4D7DC608B}">
-        <File Id="filC5811CC667B2DFDB566A6DCABA6B3942" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Braton Prime.png" />
+      <Component Id="cmp5CBE29228FBB94BBBA3D07C52A03589C" Guid="{8A9B1C18-E9BB-4870-BF2B-400C2C33C445}">
+        <File Id="fil687A833AECE35AAE547581A818290193" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Ankyros Prime.png" />
       </Component>
-      <Component Id="cmp3D71B4F5FBA13034FD565EA29718CDBE" Guid="{39CBA3A9-82AF-4D3F-9E54-FBE45AEB375A}">
-        <File Id="filB42495D16A8787154C1BE5E41A450F5D" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Braton.png" />
+      <Component Id="cmp0565C7B3235CD7A50AB4889DE30087F9" Guid="{067D7D47-E69E-43DF-9CB2-53502622D1D8}">
+        <File Id="fil95502D0420A6CEC3EA981A49E0FEB119" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Ash.png" />
       </Component>
-      <Component Id="cmpEAE4A069B493EFDBB6ADADE9065163CE" Guid="{36436C21-9B2D-41EA-8333-99482954604F}">
-        <File Id="fil0901F010277C7CE25678F3BD02C352FA" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Bronco Prime.png" />
+      <Component Id="cmp12EC4E172DC2B4B482A0EF73CB91BE4E" Guid="{8C97ED39-D494-4ACF-A8AF-71C8957224A8}">
+        <File Id="filFE3B4CB7AEAD3B7EB24311DC243949B4" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Attica.png" />
       </Component>
-      <Component Id="cmpB9F4DE59F3B377BDCCC05C6434BB5D50" Guid="{E7CAED5E-91A6-42D2-A9AA-5885DC3A27A6}">
-        <File Id="fil0B667E7904FE123311A5B3CF40980199" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Dakra Prime.png" />
+      <Component Id="cmp41D91F66F56896EDD5D2AFCC4018811A" Guid="{95E20DD8-49FC-4FCF-A0D0-E582463A8BCE}">
+        <File Id="filB8950DC5530182E013391BABB82C5F46" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Banshee.png" />
       </Component>
-      <Component Id="cmp505239308605D710A1654334E5A64573" Guid="{83F5C07B-642A-42BD-910F-E7741D9A69D0}">
-        <File Id="filB673C1326C467B11BE6AE51E255F934F" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Dual Kamas Prime.png" />
+      <Component Id="cmpE169AD57F95549477A7F0FF8E538929F" Guid="{58390C9B-6EDA-4FF0-992A-689C32A25C21}">
+        <File Id="fil7D1BDBD4EBF111794597D8288C52921A" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Bo Prime.png" />
       </Component>
-      <Component Id="cmp9796B3136C5DAA14474468AE780B0E4F" Guid="{F2C6494E-5DF0-4591-8607-53A0DCBB9149}">
-        <File Id="filB82CA85E3550F93A760C4E88ABCF43A6" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Fang Prime.png" />
+      <Component Id="cmp6278FD27C1C8404DB751E37AC4B8367B" Guid="{AA92203C-6E9D-4F90-B61B-30D26770FFAE}">
+        <File Id="filD42ACF688772565EDDEE99ED70E83EA0" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Bo.png" />
       </Component>
-      <Component Id="cmp24522427931D0B964CD9730765890686" Guid="{258A4B5B-512C-4BC7-86DE-808D2DBDC7AB}">
-        <File Id="filF944C839FA4DF4731E70F33612DC6138" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Fragor Prime.png" />
+      <Component Id="cmpDC6663D0475596C56FBFED07E058E224" Guid="{D2083E44-4E36-45CF-9BE0-479B71F98B5E}">
+        <File Id="fil06A0F8605E31F4B4AED67FEEC0E8C7DF" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Boar Prime.png" />
       </Component>
-      <Component Id="cmp983ADD1C4396FC9B84F3F45CA474C101" Guid="{4CDD75AF-B214-4DD7-AC60-7EDE4B50563F}">
-        <File Id="fil2A0AEBAC7DE06EE58D1F2FFE6E0C221A" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Galentine Prime.png" />
+      <Component Id="cmp5E557C731B8FA25991A2DCBF679E6FBA" Guid="{CA7A6EAF-6C75-44B0-BD3E-9EDD86A3B392}">
+        <File Id="filDBE1DF169B5A7BFD6D1248F946DEBAD1" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Boar.png" />
       </Component>
-      <Component Id="cmpAA21F797EA47A8F0612E7DA2E5C16305" Guid="{1808A3E1-D24E-4C11-8305-732C08060B3C}">
-        <File Id="filF749DEBD9C258AF9F21651A03F2E7786" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Glaive Prime.png" />
+      <Component Id="cmp58F2FACFB3A7F2CFFFFFF5F121C6A2A4" Guid="{0A03F566-FD2E-453B-9A7B-F9E1BB7BAE9F}">
+        <File Id="filD8E14C1DF2EBC13712C694CC8E18493C" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Boltace.png" />
       </Component>
-      <Component Id="cmpEE8D9BEC72B00F613EA50E0AD088EBDF" Guid="{D07BBDF2-EFF7-48F0-929D-E17FA213CF12}">
-        <File Id="filB4B64D42E0AFCE0ED6DC8F149C2111C0" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Hikou Prime.png" />
+      <Component Id="cmp56ECC33FEC6EC2A3AFE156D7C7E36C3A" Guid="{AF006E6D-33D0-4BE3-A3A7-CC1EB1B4B92B}">
+        <File Id="filF3AAA622C523A3A083F7778F158794CD" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Bolto.png" />
       </Component>
-      <Component Id="cmp702BF33C97ACD45EE2B6B050E693B535" Guid="{80FE4C40-471D-4567-B1BD-13D2FAFAD0B8}">
-        <File Id="filFE44D08B625A0CF5E53D698D26FF1B95" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Lato Prime.png" />
+      <Component Id="cmpAE70FB08ACE1B3359C78C58E1D293250" Guid="{E4980FB8-D403-4BE2-96FB-3B8A480FA098}">
+        <File Id="filE82C3CD9AF8263AC11FC4F3F292D6136" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Boltor Prime.png" />
       </Component>
-      <Component Id="cmp1E2815CD65331BEF84FD332713B5EDD1" Guid="{E58A3DFF-F3DF-412B-AAB1-91214674F4BA}">
-        <File Id="filABA6ABC1B548470D768FE859F29529EB" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Lex Prime.png" />
+      <Component Id="cmp053507F733046469E0C83C2E23B61E63" Guid="{30A8A433-1149-4ED1-8485-34DA70139653}">
+        <File Id="fil240FD4611644F0A1E73F062F7DEC8E46" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Boltor.png" />
       </Component>
-      <Component Id="cmp1FBBB4164EBBE626FEEC9A47B03D9962" Guid="{84B6CF48-5501-4DDC-8FC3-B8BA86A385E2}">
-        <File Id="fil976D9728907FCC13B762C6ACBBC800D4" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Lex.png" />
+      <Component Id="cmp069A882EE026413B12B2B78CE2928FF6" Guid="{9DA28C6E-B861-4B3F-9558-F545C76FA7AB}">
+        <File Id="fil86248FD9EEEC8009CA0732E5E19B4F8D" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Braton Prime.png" />
       </Component>
-      <Component Id="cmp0C1BD61EA937E9859B0055C43AD5EAE0" Guid="{2DBCD4AE-B276-4541-B518-7ABC63EB4C4C}">
-        <File Id="fil3216A3DA9BE9D1D14C33BC086AE5EF4F" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\MK1-Braton.png" />
+      <Component Id="cmpFAA5670F6054EB9DAD56882A34163259" Guid="{68563437-BDC9-4F01-B253-469D982B6B48}">
+        <File Id="fil7D025BDDDFA428410ACA608775734339" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Braton Vandal.png" />
       </Component>
-      <Component Id="cmpDB5DFB788E98D6171C9155CB9EE845A5" Guid="{EB3DF22D-2352-4A5A-9548-15D6A99C8173}">
-        <File Id="filC1E0CB24028CF8ACADB6CA5D26A1DC62" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Nikana Prime.png" />
+      <Component Id="cmp01A5B88F8C21BC7EED3E1DA4479D385C" Guid="{544A67B3-ADDA-49DC-BB70-8BDDDB2B538B}">
+        <File Id="fil3718288204B5B2A453EE828D7BECF3D1" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Braton.png" />
       </Component>
-      <Component Id="cmpA1A11F137F86DCCA497EDE1CFDBFDE62" Guid="{49F81B39-DB6A-49EE-9DDE-088812EB6466}">
-        <File Id="fil078DE1566D8ACC806909D2BA0B3339AA" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Orthos Prime.png" />
+      <Component Id="cmp02E46B617B98F8148F76336F34B43872" Guid="{8A82F70C-F113-47E5-A704-4C2BA15FEB1E}">
+        <File Id="fil0F7DC39F3B5CD7BBDAC7964C2E5F98FB" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Bronco Prime.png" />
       </Component>
-      <Component Id="cmpAA7A106D49EDC9CC416F63611E897386" Guid="{85DCED66-4851-42F8-887D-67E06E438A41}">
-        <File Id="fil3DB8255221790FA65F7CFFA2AB3D81B8" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Paris.png" />
+      <Component Id="cmp15ED23049FB9DAB4A70A08FAD23D0586" Guid="{D71FE141-60E1-4F84-AAD5-11ED59827B09}">
+        <File Id="fil6FB3993B673BA9B40869CA89D21942BE" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Bronco.png" />
       </Component>
-      <Component Id="cmp76F2F3016CBAFA4AC0C0189630F25004" Guid="{4F6A754B-E38F-45C0-A6F0-90A7830166BA}">
-        <File Id="fil6564DCED68437B8803A230E0D6388430" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Reaper Prime.png" />
+      <Component Id="cmp98F94D52FE5AEC842C04C051576E1C06" Guid="{7A862403-DAD2-48A2-AB16-6E866CA69C7D}">
+        <File Id="fil2046E24EF7DB4FD1F9469BC0EE1F970F" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Burston Prime.png" />
       </Component>
-      <Component Id="cmp32227AB387C99F6E7D8C4865E0280FBD" Guid="{9599E95D-429B-4C9B-A5CF-E8C1ECDAA90F}">
-        <File Id="fil59CA0DA4238BA561D29D71A5A28DFB1A" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Scindo Prime.png" />
+      <Component Id="cmp9846ECDF36BAC1A4AAC0934F79894AB0" Guid="{03665233-7DBD-44E9-8581-5781EB5A8D93}">
+        <File Id="filC68FCCAD6E8F093C73BD2F909C845B28" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Burston.png" />
       </Component>
-      <Component Id="cmpA1B8F053066E374CBA5141172FEA8B2D" Guid="{3283F70D-82E8-40CD-9156-765B89502925}">
-        <File Id="filDBA9503CEDB1CAA1CDC56054EFC6BF96" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Sicarus Prime.png" />
+      <Component Id="cmp101A8E922E7D0EC01B5F5AAA15C806FF" Guid="{A88B7977-4205-40AF-A14F-99C186D63FED}">
+        <File Id="filF2A4EB38B90BF93B8833564253650690" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Buzlok.png" />
       </Component>
-      <Component Id="cmp68502A182B3A29B17DBEEDFD027A579A" Guid="{4504C90A-5F82-420C-8314-58655FB78D62}">
-        <File Id="fil9A9ED46DCBABD02028BAB2AEC27F841B" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Skana Prime.png" />
+      <Component Id="cmp1D85C2245EC05C88B00E39AC6F0E2EC5" Guid="{D146E026-3332-4A03-9893-B6C72AE7B9CC}">
+        <File Id="fil8577F436C148D189CE805CF15FFD6394" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Cernos.png" />
       </Component>
-      <Component Id="cmp1E86483909555761276A8430584BBA21" Guid="{39FAC353-7EC2-47F9-80A2-F3AA90269B29}">
-        <File Id="filFD10E27FFFE9703B2F341FAFD0C674CE" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Spira Prime.png" />
+      <Component Id="cmp4ABF1A6E2623AA89423CFDE1BE2B3624" Guid="{2166183F-11F0-4B6B-ABA0-A7E635397B4B}">
+        <File Id="fil9B903FBB6BDD004E861E620B68E2C23B" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Cestra.png" />
       </Component>
-      <Component Id="cmpC121D636B1732EE6BCD63405B8D540C6" Guid="{9498ACAE-91C4-4151-9425-D1578E929F8A}">
-        <File Id="fil5A3C719C37ECC4B3679C650E63ED8924" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Vasto Prime.png" />
+      <Component Id="cmpAE60506442E277DB233077131B183606" Guid="{9251339D-F8E4-4003-AEC1-D74562D4818F}">
+        <File Id="fil17304156255A60462455CD61D50F426E" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Chroma.png" />
       </Component>
-      <Component Id="cmpB8BE77CB29DDE069B8BBE96AA20A10D0" Guid="{C6256CA4-729C-4135-995C-A808756BB0A4}">
-        <File Id="fil4D4CA0F6F3E02696FF7FB1021C5AA7C8" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Venka Prime.png" />
+      <Component Id="cmp2E57D3AA6408A8397595CB04E58E0BD2" Guid="{6A93907B-8663-41AE-8DC9-2D372655C992}">
+        <File Id="fil66F29AA22E71819A5915165B826C2588" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Daikyu.png" />
       </Component>
-      <Component Id="cmpE864EFAAEFE6D5FF9A5717721C072603" Guid="{3D021352-8487-4ACF-8F13-D8C961A95EF6}">
-        <File Id="fil50EF1784A8A18C35EEF6659A7F3E4D84" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Zhuge.png" />
+      <Component Id="cmpD47990F696A1E750FA51BD09FE4B850C" Guid="{FB429EF0-CE82-48D7-8186-139E7B25677D}">
+        <File Id="fil0194CE5635D19E9B2E9EC85B174CE3B9" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Dakra Prime.png" />
+      </Component>
+      <Component Id="cmp408D1A680A4D65C419F416846ADD40F6" Guid="{E7EBE639-BCEB-4DFD-B49D-96281EC7662E}">
+        <File Id="fil44DA939D9E9355FA0C25DBFC37C921C1" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Dera Vandal.png" />
+      </Component>
+      <Component Id="cmp2142409817EEDC01E571F4981BD10806" Guid="{016A881F-D8FB-45D8-AC9E-2884B2F73FF7}">
+        <File Id="filF4A555DA842194D06F8A6DC7C3CC8B1E" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Dera.png" />
+      </Component>
+      <Component Id="cmp4F8AEFD6262490B913FE1B182EBA2283" Guid="{29B5AC4A-502A-4720-AE92-F2321D37EC84}">
+        <File Id="filB3F33B74F8C192DA7C26A0C752543966" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Despair.png" />
+      </Component>
+      <Component Id="cmpFE9FCE6440BA38836B09943174A83323" Guid="{DAB216B8-15C4-4C36-98C3-6325BCA76A72}">
+        <File Id="filE38EB98412A2609DB5D10B52B301C020" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Detron.png" />
+      </Component>
+      <Component Id="cmpEB32EF8B8E4A242A89075F364279A2D8" Guid="{7AAB52AB-9EB7-4866-9A75-5D27916F33A5}">
+        <File Id="fil3605044FB90AD8D02DFADB6814FA436C" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Dex Dakra.png" />
+      </Component>
+      <Component Id="cmp36DD94F0289F25C050C8A074B8694EB6" Guid="{7B5C33CE-65C4-4576-9F6E-262A05590CA9}">
+        <File Id="fil898FC7B85E15C12225D40E10F7A42A94" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Dex Furis.png" />
+      </Component>
+      <Component Id="cmp2B01E581A132FA1CF4F9E0A248E99F77" Guid="{E6F827C5-7BF5-4B72-8F37-BBB04A2BB156}">
+        <File Id="fil24CB7A2CA5310DAB8D4472FC4C8B03E8" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Dragon Nikana.png" />
+      </Component>
+      <Component Id="cmpE60D1F438F3FFAD90FE4A4853ABE052A" Guid="{5F6078EF-D52C-4EE5-B584-EC94DA5F1F0F}">
+        <File Id="fil9D9325DC2EDEE0B188D134885396386F" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Dread.png" />
+      </Component>
+      <Component Id="cmpEEDF5445DEC6A5F9701AB6F2B942683D" Guid="{B0F78625-CD2E-4D47-8D79-415BC7EF6303}">
+        <File Id="filED88A003EBD1752D430FBBD8496AB592" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Dual Cestra.png" />
+      </Component>
+      <Component Id="cmpA092FB6FB980DDA5D6F827098B7CDD40" Guid="{72474AA5-2F5E-40F2-BC82-0FEF96843F89}">
+        <File Id="fil27DD37E2AA2DDD52869513D44A6BF6EC" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Dual Ether.png" />
+      </Component>
+      <Component Id="cmpAAF4DD798F96C77D0448491F75006F3D" Guid="{CC4607C5-4326-4B97-8C85-75F2D4D4DB9E}">
+        <File Id="fil9FB6EC1930DA3360CB87239784D6B38E" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Dual Ichor.png" />
+      </Component>
+      <Component Id="cmp901CDA73D86139D7898418F1FFB71896" Guid="{19FD46D2-18FD-4DF2-830A-65FDB8C8FECA}">
+        <File Id="filADBAC4AAA3790F466F2FD9F71648530E" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Dual Kamas Prime.png" />
+      </Component>
+      <Component Id="cmp6D07DC5E412CD987E093681E8E2E1538" Guid="{11D87101-C31D-4966-BF72-3E01BFB161A2}">
+        <File Id="fil74C91DAFAED1B5A65C73D9F93CA94A58" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Dual Kamas.png" />
+      </Component>
+      <Component Id="cmp547A213044C5F795199406ECEC59EB57" Guid="{5FFA2093-2B60-47BF-9864-650C1C671373}">
+        <File Id="filE5436D92EB0C144A386B02849A0071EF" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Dual Raza.png" />
+      </Component>
+      <Component Id="cmpF8DF7D990CC83BE59000A9862368F10F" Guid="{FCA16FCA-C7A6-4B4E-A907-000EBC0999AE}">
+        <File Id="fil3143E03142051EBC764CD9B06C9FDA0C" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Dual Skana.png" />
+      </Component>
+      <Component Id="cmpE9F470CF488603F452A51113A521C3E0" Guid="{B32A982B-22DD-4E12-A584-4F46535CE8FF}">
+        <File Id="fil98F5F478C395FFFC9264041261BA99FA" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Dual Zoren.png" />
+      </Component>
+      <Component Id="cmp8FDC1388014871BE012D26C5DE2C9199" Guid="{5BCF1810-05FE-4766-8415-885A6875BA56}">
+        <File Id="fil7AB2DB50D14F57C8C15BF0785E97C840" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Ember Prime.png" />
+      </Component>
+      <Component Id="cmp3DCB8A5F5C351691467FDA15979B114B" Guid="{E4A6982A-1E9C-4E6C-8AC1-A500C7A8F791}">
+        <File Id="filEAC852FD7F4B140CAF6958D4024BCE5D" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Ember.png" />
+      </Component>
+      <Component Id="cmp48B9B7FFA7207B8E74017719099873A5" Guid="{F9292E4A-E3FB-4C95-9288-6BB87DCD5999}">
+        <File Id="fil09C48E1685D65E338971ED6E179579A3" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Ether Daggers.png" />
+      </Component>
+      <Component Id="cmpEDBA95074E3204D56933BFA6A772A798" Guid="{0E76079D-1CC3-4A7A-8C0E-4A2D685BF388}">
+        <File Id="filEB6BE58714659E296535DCEA8A1012AB" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Ether Sword.png" />
+      </Component>
+      <Component Id="cmp245E9B74BFD424842ECA6EC7323ED71F" Guid="{2DB2FE43-FFAF-400C-BB36-8D8173E9ECB0}">
+        <File Id="fil60D0ABD35DB9E8FA5FDC17AB0F55018C" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Excalibur Prime.png" />
+      </Component>
+      <Component Id="cmpD579629AEA533CD06C9072D85D006E6E" Guid="{2BD8789F-72A2-4F44-945A-3D120337486F}">
+        <File Id="fil4671CF5BBF0805C4829A8053F689E036" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Fang Prime.png" />
+      </Component>
+      <Component Id="cmp61DDDE6803C3B771AB430293CF12FE16" Guid="{F8137FA4-165A-4690-871C-40A09C156300}">
+        <File Id="filDFC341F55839186F01A1920EF33D1430" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Fang.png" />
+      </Component>
+      <Component Id="cmp798BB18ECE1A76DF1DA27A30A5A3FCF4" Guid="{93C9FE20-4BAD-43FC-B27C-682CFC756658}">
+        <File Id="filD92FEFE6CAE2C14ABAF0B2322BC871F0" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Flux Rifle.png" />
+      </Component>
+      <Component Id="cmp769D4BB8593C292AA90A1C2424B8B571" Guid="{D980F62B-9053-4442-83E1-158765769895}">
+        <File Id="filC388DC928CB94CD0B0EB88A36DE6D336" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Fragor Prime.png" />
+      </Component>
+      <Component Id="cmp6AB254FDCA05EA4AB6C160ECC80214B5" Guid="{827DE4B9-63CD-45B6-A5D0-9D921EEF737F}">
+        <File Id="fil473C6840AF98C26D9BF0606B2827B5AF" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Frost Prime.png" />
+      </Component>
+      <Component Id="cmpCE1208E17A72E6DADD8E2C2554449019" Guid="{7F6579A1-D393-4395-A8D8-79E1E014E36F}">
+        <File Id="fil9B36DA0B2CB15E748FBBE164FB1215B4" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Frost.png" />
+      </Component>
+      <Component Id="cmpF7636DB9D762A94A1CAFD478184FC5A6" Guid="{229ED2C3-B5D9-454A-A832-326FA11AC2E8}">
+        <File Id="filDB8C4E0292D3FFC2D7B2446BABCC77D1" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Furis.png" />
+      </Component>
+      <Component Id="cmpFC73F9C0FF2CF6A29D4026CA25430A51" Guid="{5DC8F353-69C9-4D49-807F-EEB3F102453E}">
+        <File Id="filCC983A9F33D7E986BFD217E7EAB3E067" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Galatine Prime.png" />
+      </Component>
+      <Component Id="cmpAD10C59CCB8C3D4583CC2BA7634AE58A" Guid="{1AEE421A-B9A0-4A04-805C-D478AE2ACFFF}">
+        <File Id="fil5F232AEE6854291349AD30F00D6A3283" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Glaive Prime.png" />
+      </Component>
+      <Component Id="cmp46A24C48AADFC5CAFA7148D069655C49" Guid="{CBE5B664-658D-492D-92CB-61B1A54105DE}">
+        <File Id="fil67FA66929BA281010A866446CD6792F5" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Glaive.png" />
+      </Component>
+      <Component Id="cmp55F268AC46CC57B53F52087B845B4662" Guid="{8C62C459-BCF6-4AE3-9287-3928B57E2A48}">
+        <File Id="fil917642AFEC0F8001F323990495A18C86" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Glaxion.png" />
+      </Component>
+      <Component Id="cmpB19CA29639996AB5691ACA644D4DCE1B" Guid="{969040F6-2DF0-4971-8618-7B90C75D967C}">
+        <File Id="fil430C9A04C0FB260AEBD71580501932FA" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Gorgon Wraith.png" />
+      </Component>
+      <Component Id="cmpFC9B92B6FBBC6253428F1B8E26086559" Guid="{56507CAF-65C3-48FB-9F49-01AEC1A2F3FF}">
+        <File Id="fil85E0EFE68340D8A6C103F05D64D29367" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Gorgon.png" />
+      </Component>
+      <Component Id="cmpB7DFBFA6B2B7FAB00FD3DAABADFD3211" Guid="{1601AD62-0705-455C-BC54-C62F1CAC1332}">
+        <File Id="filC9413591941983961261A7914D00EB76" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Grakata.png" />
+      </Component>
+      <Component Id="cmp14696C45B5C4AF4922A0A65CDADF8592" Guid="{BAD797D4-A4EC-4C36-8E2F-01E494BE4873}">
+        <File Id="fil87B1EA2982CBDC8538759D22A0C52C6A" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Grinlok.png" />
+      </Component>
+      <Component Id="cmp263857D7DBC29297AB37D8DD8B3BEBAB" Guid="{F68F35D3-7F00-4149-9C96-E6EB59AE596B}">
+        <File Id="filF58C6256AB51BC61A4A5999A41C39323" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Harpak.png" />
+      </Component>
+      <Component Id="cmp9BFC870A54908554CF5032718E6914AC" Guid="{7B8C91B5-8D50-4EEC-9904-55C52C8888B2}">
+        <File Id="fil034BD34E58733F200CB17D4D2E9036E3" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Hate.png" />
+      </Component>
+      <Component Id="cmpDCFF016B62FC9C9CD590ECAF490C9995" Guid="{6999ADD1-88E6-4FE3-AD42-2B73A56A76EA}">
+        <File Id="filA2AFF66C6AD8976EE65F61549A260D9D" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Hema.png" />
+      </Component>
+      <Component Id="cmpD1DF8D310D33FACD82E9ADEF61B90F03" Guid="{842624CA-5307-4C4E-8C56-757DBB555509}">
+        <File Id="filDCAF2C91984F7989864ECB95B49B0D6C" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Hikou Prime.png" />
+      </Component>
+      <Component Id="cmpD58FAADF3F8B9E1CD909235ECEF759D8" Guid="{42BD9472-D65A-4631-95DF-E22E1452A624}">
+        <File Id="filCE4333305483D17693E52A01F26ED795" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Hind.png" />
+      </Component>
+      <Component Id="cmp9556DE5B73EC9F265EAA629399C11E20" Guid="{4A86EE0D-D2CD-408F-BE2E-7D8232793FBD}">
+        <File Id="filA0B10629563DBD57E6C63921E45BA706" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Kama.png" />
+      </Component>
+      <Component Id="cmpF5AA180BA8741EF613B96DB1D1AA100D" Guid="{6AE999B3-A0B6-425F-AD83-A394A334EB53}">
+        <File Id="fil5886CDA47E7379642A31D223DB653E3B" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Karak Wraith.png" />
+      </Component>
+      <Component Id="cmp7529B3F26F9DB81639102D7D304E510D" Guid="{0BDE891F-9D3D-43B1-B89C-82A20CD12976}">
+        <File Id="filF267FAA239805AC140C35B1493AFA7FB" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Karak.png" />
+      </Component>
+      <Component Id="cmp6DC44D0E54981B02116D3A80EC866A5F" Guid="{E7BB3688-22F8-4FC9-9B83-69F2C0549B87}">
+        <File Id="fil06474D43EE7BF2248F8154BF9FDA33BC" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Kestrel.png" />
+      </Component>
+      <Component Id="cmp4CE243EDB34B533486213282C25CCA47" Guid="{A780EB64-E75F-473F-9281-D8FA915F6552}">
+        <File Id="filFC71750E5FFDACE723F79132887ABE87" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Kogake.png" />
+      </Component>
+      <Component Id="cmpE0E2A708EE914C741C236BB15A4CA525" Guid="{5027D853-E5CF-4199-AA5F-1244D26F3E94}">
+        <File Id="fil8FF90F9AECC95F317427157045D0889A" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Lanka.png" />
+      </Component>
+      <Component Id="cmpC81225EE793F02E1F09847C51C6E5321" Guid="{5404D4E2-54EB-4CC4-AE20-9B603FE0EBEA}">
+        <File Id="fil4379870B5D3D86E5CDA431115CAD6AB6" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Lato Prime.png" />
+      </Component>
+      <Component Id="cmpAF487D959F927D20676B15D3EA9D09D1" Guid="{470474D8-DBBD-43C1-8769-1597510F39B3}">
+        <File Id="fil4F1E70EE66CB72A23337889BA77ACB0E" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Lato Vandal.png" />
+      </Component>
+      <Component Id="cmpF039241270CA7C882F3BFDC8B71ABF8D" Guid="{22F372E6-4F71-4A49-A5A6-C88790BAF520}">
+        <File Id="fil28EE7DB37BD9BBFF53DCB9413C0C86CB" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Latron Prime.png" />
+      </Component>
+      <Component Id="cmpEA1C34429603CBEDA7030F58AF008F69" Guid="{AB1B5A8F-A2A5-40E8-AF52-ACEE7378756D}">
+        <File Id="filFD3C4CF944630E8993E51B3A42172207" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Latron Wraith.png" />
+      </Component>
+      <Component Id="cmp69E9033157E9B078C15A0687A4F3DF2A" Guid="{08E65416-620B-4493-9CDC-D1E5866FC418}">
+        <File Id="filE483CE9B74FB4C427501FB7C5CFA4633" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Latron.png" />
+      </Component>
+      <Component Id="cmpF2B05C4D1B9956EC324B65E1C3106147" Guid="{119CCBBD-1B0A-4C87-9012-6118A4FF6432}">
+        <File Id="fil710559EFC3B8E93258E6E91BB567266D" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Lecta.png" />
+      </Component>
+      <Component Id="cmp3FD3601968AABAD80B3780BABAC5328C" Guid="{A6435E88-20C3-4355-8D58-75D67EB23E7B}">
+        <File Id="fil7CFFFB6FC8603C025D236B2959AFCDE3" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Lex Prime.png" />
+      </Component>
+      <Component Id="cmpACC01D8842C56CD3C6FAE7E3913E8758" Guid="{B9B52E39-DBC9-47BF-8E12-AB041C61D943}">
+        <File Id="filBE8FBE69A6384D0527230F1D91F8E99B" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Lex.png" />
+      </Component>
+      <Component Id="cmpC7DC1F4F4F52D33EFCCC72E170BC27D7" Guid="{10B09CB3-339F-4759-B694-47AB19D490A6}">
+        <File Id="filA04DA83D85DD3DA7AD11F129476DB572" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Magnus.png" />
+      </Component>
+      <Component Id="cmp578FEC7931BAFCB917656EC8A167049C" Guid="{8963B3CE-B90E-4E9C-9812-A37F94AE0F11}">
+        <File Id="fil87C650F7347D2A8F808CE41B57CFC7C6" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Mesa.png" />
+      </Component>
+      <Component Id="cmp0272A2E96BC90168D538543D7A6264A5" Guid="{1817E8B1-FFC9-4EE9-AA4C-0DD6AF916240}">
+        <File Id="fil7363A7C78909F452B9AB2DE47C00CF99" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\MK1-Braton.png" />
+      </Component>
+      <Component Id="cmp193FEF00E2D7C5B111E2060BA8885BEA" Guid="{78DC90DE-0D59-444F-923A-590461F20C2E}">
+        <File Id="fil49BC204021493431F325FA35B3D88367" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Mutalist Quanta.png" />
+      </Component>
+      <Component Id="cmp2A519595DA3C42D5B1A9E3033D3D39D2" Guid="{2D3CFE4E-E7A9-4C2F-870D-40AE18A39350}">
+        <File Id="fil373C3CED1279B35E6E7475887EF13192" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Nikana Prime.png" />
+      </Component>
+      <Component Id="cmp2159C5C1F6E2072F71C5B75F82CAA650" Guid="{F9B82213-5EC0-47D2-824D-8D4DD96ADAD0}">
+        <File Id="fil9BFDEB5236F9CA270AF6BDB6CD26CE70" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Nikana.png" />
+      </Component>
+      <Component Id="cmp9F694FA28DE09A997BD9B85869514704" Guid="{A6100EFF-C880-4005-B16D-183EC554BA12}">
+        <File Id="fil10E025F5EFAD61C33F42A9507E8D5569" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Nova Prime.png" />
+      </Component>
+      <Component Id="cmp485CF351B6C01E9469926D8965B5750B" Guid="{34DB5E57-6F9F-446E-A784-35DB23AC67BE}">
+        <File Id="fil6677A32482E75A65A88077A16BAD7A70" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Nova.png" />
+      </Component>
+      <Component Id="cmp925B919E84A4CB139D9CBC1D123A3017" Guid="{B7F22F7D-3FB3-4228-80CD-68FB6CAA50AC}">
+        <File Id="filD26401FF0DE40F3CC8EEEC5D404AE898" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Nyx.png" />
+      </Component>
+      <Component Id="cmpABD415C93ACBF7AFD534378042AE5B31" Guid="{C84C625B-46FE-41BD-BBD7-6B18F1A5101E}">
+        <File Id="fil49207744D6693FDBCA389EB992321152" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Obex.png" />
+      </Component>
+      <Component Id="cmpB47B8DA5D4D3762574F1FB223F6B76EA" Guid="{E2087F39-7241-4398-B96B-24A9A91408BF}">
+        <File Id="filCC44CC8854DC837139D00C422F1A5ABF" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Opticor.png" />
+      </Component>
+      <Component Id="cmp795A550B318103400416E0569CEBCC1D" Guid="{FE224C02-F612-4253-8C4F-3245A5E5CB36}">
+        <File Id="fil65D9D57A8015B56B95229BB0B5B06705" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Orthos Prime.png" />
+      </Component>
+      <Component Id="cmp1D301837C5A8B1583B553D68124A327D" Guid="{A32694C7-898F-4865-BB5B-905FC6CB83DA}">
+        <File Id="fil6A35F1FCAE4258C4DF97F26F8F90F4C8" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Orvius.png" />
+      </Component>
+      <Component Id="cmpD080F8AD4D53BD21D26B72BB1236EACA" Guid="{BE10C711-9066-4321-B75D-5F57540709AD}">
+        <File Id="fil8A649C9E82FEF00274EEAE4DD7E4EA94" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Paracyst.png" />
+      </Component>
+      <Component Id="cmpC41B4A4175B2DA38DD807521E3C6D341" Guid="{3D6CDEEA-CA24-4F5A-8412-4E1F5E4A9800}">
+        <File Id="filAA88076FEF04D4040FDE2B17373D0C86" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Paris Prime.png" />
+      </Component>
+      <Component Id="cmp5537B3A2C589C46D295A0B1CEF698A9E" Guid="{CD6ADB4F-03BE-461A-A5C1-6E56AD2263FC}">
+        <File Id="fil591FBC751731AB154A5E955AEC991600" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Paris.png" />
+      </Component>
+      <Component Id="cmp5767D56DD266147A44726B0DB770FB07" Guid="{FE431A22-B81B-4586-B83D-CB23445DCDD5}">
+        <File Id="filCB3606BF0C5B473097C3D8B4052B9AFD" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Penta.png" />
+      </Component>
+      <Component Id="cmp6084E82C8C5CE7508759EBDA1D20621A" Guid="{5850EF5F-97E0-416E-9F71-590A4BAD5B64}">
+        <File Id="fil70D0B36789EACAED6A8FAD4B6DE050E8" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Prisma Gorgon.png" />
+      </Component>
+      <Component Id="cmp8C0B29526DBAEAB8BF954EF332A23D50" Guid="{75731711-AD56-442B-85D5-A98B4F6F5782}">
+        <File Id="filD573404C2D30044F57C803296ADECD6F" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Quanta.png" />
+      </Component>
+      <Component Id="cmpAB0278BB8F54079429A71C3025287BFD" Guid="{1B55DA44-5783-41E2-8622-562B7184ED1B}">
+        <File Id="fil84F684BA27FBCE24E336D5418C6FA6E0" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Reaper Prime.png" />
+      </Component>
+      <Component Id="cmp254D0A0079BDF015D29A05D6B2C068BE" Guid="{F304E2E7-E7BD-4DD4-9C20-068743A02487}">
+        <File Id="fil68495E7E217581634F52CB5527071760" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Scindo Prime.png" />
+      </Component>
+      <Component Id="cmp4125B1C393AD75BE40F915C5F65AFA7D" Guid="{06FBDCB4-6556-401F-BF4F-4A67BD8170FD}">
+        <File Id="fil623D709445773CAE1F611ECD761D64A6" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Scindo.png" />
+      </Component>
+      <Component Id="cmpB9BEB12D54FA2B57DBB0335D17E7984E" Guid="{82D29334-DFD6-4A13-A217-1EAB3BD46A26}">
+        <File Id="filBC643CC871017EA5FED541AA387B6F12" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Seer.png" />
+      </Component>
+      <Component Id="cmp9A1A927736B1F9A732A40F721FB34761" Guid="{77B7F32F-ECF6-4084-9A2E-286569B34927}">
+        <File Id="fil52CF9454C42EF106BDB87CAA22C363E9" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Serro.png" />
+      </Component>
+      <Component Id="cmp16114558E3DEAB9614D6EFAE204CBEFA" Guid="{713C3969-5C90-4049-AFDC-EC8FCEF71A32}">
+        <File Id="filDBA7E9DC4681C750E6FB4CFFE6D5AD40" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Sicarus Prime.png" />
+      </Component>
+      <Component Id="cmp4F2D6926BE6B13497FED58928888FDCC" Guid="{947FB23A-BB7F-409D-99B7-0107E94DABA2}">
+        <File Id="filA647085F30C9DE5D49FA61CE0E21D71D" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Silva and Aegis.png" />
+      </Component>
+      <Component Id="cmp1BBC4DF9E9E83ED6425CA49E0CCF6DB1" Guid="{BF839530-62EC-40FC-BB3C-25CFCF0151D6}">
+        <File Id="filFAEBA32CC05D68A816DEF97168CDBD7B" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Simulor.png" />
+      </Component>
+      <Component Id="cmp6FC4454DC8F2E817ED4CDC4DBF8AC360" Guid="{57FAD7C9-F878-4ED9-BA78-DF24D6DF074A}">
+        <File Id="fil50CF699E65696AD239E4EC15E99D460F" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Skana Prime.png" />
+      </Component>
+      <Component Id="cmp1381D2CE4C7596A4C8961FF672DAAD02" Guid="{A882D691-B38C-415A-8F56-DBAAD5717298}">
+        <File Id="fil89466223CCC001C1248ACEABA8D8F42D" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Snipertron Vandal.png" />
+      </Component>
+      <Component Id="cmp397E909758FA25AE4FFC6ED82F88E2AF" Guid="{A2732FAB-C952-41F2-AB9E-90F796423718}">
+        <File Id="fil1B8C87C19BD41C8F60D98A0BB76A4D61" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Soma Prime.png" />
+      </Component>
+      <Component Id="cmp8589967D39781A9C1D33D73BE4177E85" Guid="{7C695DE6-0D70-438C-B220-A504F50DF3E9}">
+        <File Id="filDE8AE8144EA89A2D2685B00F023186E1" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Soma.png" />
+      </Component>
+      <Component Id="cmpB6829C7237EDFBD82ADA8A87E2A7C432" Guid="{233D8B65-6380-4BA3-B3FD-703598DAACF2}">
+        <File Id="filB14D5335B611F66F9E1516867788BE4E" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Spectra.png" />
+      </Component>
+      <Component Id="cmp0463697CF080271911C92075B2C54F6E" Guid="{F8025DCB-304C-416A-8C38-B1A7147B346F}">
+        <File Id="filAEA1040ADB508867840CED1F0D979304" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Spira Prime.png" />
+      </Component>
+      <Component Id="cmp4D471CE342CE644ADA6D998F08B51C0E" Guid="{CA0D2467-CA9A-41A1-ADA2-ADC4EE1C070D}">
+        <File Id="fil77B2FE6249777C5885EB91359F7C3EAA" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Supra.png" />
+      </Component>
+      <Component Id="cmpDB0C35DB5EDDDE51FDDBE06870EF5E77" Guid="{3D56ABC2-FE0F-4739-8E48-712E53A6CE36}">
+        <File Id="filF6A166A677195C0178C0013AFD0DFBFD" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Sybaris.png" />
+      </Component>
+      <Component Id="cmpA800CC645718A357C3FEFAAA864902DE" Guid="{9E9A1E94-94BB-4DBF-A369-B9DFBDE52E55}">
+        <File Id="filF663CA72835EF8E12EDF7FE0980F6FAE" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Telos Akbolto.png" />
+      </Component>
+      <Component Id="cmp12D14BC97992CDABFED63B7A4286708A" Guid="{742C6DBF-1D49-4C76-8843-1EB60B54D167}">
+        <File Id="fil2B73110CA47B1EB3F3874E2B0E3E8EDF" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Tetra.png" />
+      </Component>
+      <Component Id="cmpDE170757F979C641671B936A3E692706" Guid="{4120DE3E-FCB6-4E89-B71C-6F965DFEB4AA}">
+        <File Id="fil52C361226CBBC2F0CFEBAAF510F0D9EA" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Tiberon.png" />
+      </Component>
+      <Component Id="cmpA12F2525F66A89459EADD75534437644" Guid="{C0549F04-4499-47C2-9560-AD0CFDEC5355}">
+        <File Id="filCD2E00DB71CC12C8887A18BF49AD80BE" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Tigris.png" />
+      </Component>
+      <Component Id="cmp15C02B79C7BED28D2539E0E06D52F9F7" Guid="{228933BB-14A0-451D-B8DA-577600D0C3F8}">
+        <File Id="fil6EF3C1F64CF37F04D61CEAFC1D7A2262" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Tonbo.png" />
+      </Component>
+      <Component Id="cmp0957AC46F1DF1F801F2A8137E3710187" Guid="{1141A872-B2E3-48B9-96DF-83E024ACE771}">
+        <File Id="filD07EFDB7BC11FB949A13365567363012" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Trinity.png" />
+      </Component>
+      <Component Id="cmp7B1A4DD68C78D7C0A8543EE1607814B0" Guid="{E7E96EA6-9BF9-4039-A546-B28316BDFCD6}">
+        <File Id="fil6DA99E468DBCA6D96F639E6BF1C5DD2C" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Twin Gremlins.png" />
+      </Component>
+      <Component Id="cmp78DD8142E170E7B5CEB7C6A228AD8AE8" Guid="{696D1873-FC20-47C5-AD9C-298D5DCB78A3}">
+        <File Id="fil394C3BE763021C3E27556A5AFC488019" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Valkyr.png" />
+      </Component>
+      <Component Id="cmp35535521F8F0EBE7502505ECC61ECD93" Guid="{10934DFC-DE2C-4953-9C1F-436D2C438BA5}">
+        <File Id="fil73EA28E49DA61687640626086192CD21" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Vasto Prime.png" />
+      </Component>
+      <Component Id="cmp93C884CE729C9DB695834B47E056FE12" Guid="{F33132C2-385A-4842-8607-24789DC9328F}">
+        <File Id="fil6787EA056FEFE9AAEEC143CF45641EAD" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Vasto.png" />
+      </Component>
+      <Component Id="cmpECC4D5E04CA6081CFD515C29E338ABC4" Guid="{6876A730-BC00-45DA-B33F-88CF98789E63}">
+        <File Id="filFB0906E8A1F9DE6DF9151A2D441F0FB1" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Vauban.png" />
+      </Component>
+      <Component Id="cmp0FFEB64AD05F4DC3FAE55C16AC50BC91" Guid="{684E632A-DC42-43F6-B261-EA5CC4C6A602}">
+        <File Id="fil244AD28953C55D256398748223806F5F" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Venka Prime.png" />
+      </Component>
+      <Component Id="cmpF4ABA603080C17FBCE805B2D9307C096" Guid="{D3756067-AA91-4E4E-ACD1-EA428FA642D0}">
+        <File Id="filC5FDC9DC848D9D0B43511EF2B9C7B87B" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Volt Prime.png" />
+      </Component>
+      <Component Id="cmpAC42E62BB480C065F048BB8B1498059C" Guid="{218EF0F3-2864-482F-B17C-C8FB5DDCB64B}">
+        <File Id="filA0C7293AB9A690F15FE5112019625B1F" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Vulkar.png" />
+      </Component>
+      <Component Id="cmp49B596B4578CCAD6C72B4B7C51644380" Guid="{E06D6407-BBA1-4830-B137-F0608D24AA14}">
+        <File Id="fil67ADDBBABB1FFC1D5853F484D8ED4799" KeyPath="yes" Source="$(var.Discord Link Prime.TargetDir)\Images\Zhuge.png" />
       </Component>
     </ComponentGroup>
   </Fragment>

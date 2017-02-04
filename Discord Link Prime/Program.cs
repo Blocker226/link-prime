@@ -82,24 +82,31 @@ namespace Discord_Link_Prime {
             if (message == null) return;
             // Create a number to track where the prefix ends and the command begins
             int argPos = 0;
-            // Determine if the message is a command, based on if it has a '[' and ']' or a mention prefix
-            if (!(message.HasCharPrefix('[', ref argPos) || message.HasMentionPrefix(bot.CurrentUser, ref argPos))) return;
-            //if (!((message.Content.Contains("[") && message.Content.Contains("]")) || message.HasMentionPrefix(bot.CurrentUser, ref argPos))) return;
-            var commandRegex = new Regex(@"\[(.*?)\]");
-            var commandMatches = commandRegex.Matches(message.Content);
-            string[] commandInput = commandMatches.OfType<Match>().Select(m => m.Groups[1].Value).ToArray();
-            Console.WriteLine(commandInput[0]);
+            IResult result;
             // Create a Command Context
             var context = new CommandContext(bot, message);
-            // Execute the command. (result does not indicate a return value, 
-            // rather an object stating if the command executed succesfully)
-            var result = await commands.ExecuteAsync(context, argPos, map);
-            //var result = await commands.ExecuteAsync(context, commandInput[0] + "]");
+            // Determine if the message is a command, based on if it has a '[' and ']' or a mention prefix
+            if (message.HasCharPrefix('[', ref argPos) || message.HasMentionPrefix(bot.CurrentUser, ref argPos)) {
+                // Execute the command. (result does not indicate a return value, 
+                // rather an object stating if the command executed succesfully)
+                result = await commands.ExecuteAsync(context, argPos, map);
+            }
+            else if((message.Content.Contains("wf[") && message.Content.Contains("]"))) {
+                var commandRegex = new Regex(@"\[(.*?)\]");
+                var commandMatches = commandRegex.Matches(message.Content);
+                string[] commandInput = commandMatches.OfType<Match>().Select(m => m.Groups[1].Value).ToArray();
+                //Console.WriteLine(commandInput[0]);
+                result = await commands.ExecuteAsync(context, "link " + commandInput[0] + "]");
+            }
+            else {
+                return;
+            }
             if (!result.IsSuccess) {
 #if DEBUG
                 await context.Channel.SendMessageAsync(result.ErrorReason);
 #endif
             }
+            
         }
     }
 }

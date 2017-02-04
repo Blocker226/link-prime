@@ -1,5 +1,4 @@
-﻿#Link Prime Alpha A1.0.3
-Designed by Blocker226#2438
+﻿Designed by Blocker226#2438
 .NET Framework 4.6 (Discord.Net 1.0.0)
 
 Discord's prime method of retrieving Warframe information (I hope).

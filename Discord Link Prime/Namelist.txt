@@ -4,6 +4,7 @@ Amprex
 Attica
 Boltor
 Braton
+Braton Vandal
 Burston
 Buzlok
 Cernos
@@ -15,13 +16,19 @@ Drakgoon
 Dual Decurion
 Fluctus
 Glaxion
+Gorgon
+Gorgon Wraith
 Grakata
 Grinlok
+Harpak
 Hek
+Hema
 Hind
 Karak
+Karak Wraith
 Kohm
 Latron
+Latron Wraith
 Miter
 MK1-Braton
 MK1-Paris
@@ -31,6 +38,8 @@ Opticor
 Panthera
 Paracyst
 Paris
+Prisma Gorgon
+Prisma Grakata
 Penta
 Phage
 Quanta
@@ -39,6 +48,7 @@ Sobek
 Soma
 Strun
 Sybaris
+Telos Boltor
 Tetra
 Tiberon
 Tigris
@@ -75,6 +85,7 @@ Kohmak
 Kraken
 Kunai
 Lato
+Lato Vandal
 Lex
 Magnus
 Marelok
@@ -92,7 +103,7 @@ Viper
 
 //Melee
 Amphis
-Ankryos
+Ankyros
 Atterax
 Bo
 Boltace
@@ -132,6 +143,7 @@ Nikana
 Obex
 Onorix
 Orthos
+Orvius
 Rathbone
 Redeemer
 Ripkas
@@ -167,7 +179,7 @@ Lato Prime
 Lex Prime
 Sicarus Prime
 Spira Prime
-Vasto prime
+Vasto Prime
 
 //Melee
 Ankyros Prime
@@ -176,7 +188,7 @@ Dakra Prime
 Dual Kamas Prime
 Fang Prime
 Fragor Prime
-Galantine Prime
+Galatine Prime
 Glaive Prime
 Nikana Prime
 Orthos Prime
