@@ -14,7 +14,10 @@ Dera
 Dera Vandal
 Drakgoon
 Dual Decurion
+Dex Sybaris
+Dread
 Fluctus
+Flux Rifle
 Glaxion
 Gorgon
 Gorgon Wraith
@@ -27,12 +30,14 @@ Hind
 Karak
 Karak Wraith
 Kohm
+Lanka
 Latron
 Latron Wraith
 Miter
 MK1-Braton
 MK1-Paris
 MK1-Strun
+Mutalist Cernos
 Mutalist Quanta
 Opticor
 Panthera
@@ -59,6 +64,7 @@ Vulkar
 Zhuge
 
 //Secondaries
+Acrid
 Afuris
 Akbolto
 Akbronco
@@ -77,6 +83,9 @@ Bolto
 Bronco
 Castanas
 Cestra
+Detron
+Despair
+Dex Furis
 Dual Cestra
 Furis
 Gammacor
@@ -88,16 +97,19 @@ Lato
 Lato Vandal
 Lex
 Magnus
+Mara Detron
 Marelok
 MK1-Furis
 MK1-Kunai
 Nukor
 Pyrana
+Seer
 Sicarus
 Stug
 Twin Gremlins
 Twin Vipers
 Tysis
+Vaykor Marelok
 Vasto
 Viper
 
@@ -108,14 +120,17 @@ Atterax
 Bo
 Boltace
 Centaur
+Dex Dakra
 Dragon Nikana
 Dual Cleavers
 Dual Ether
 Dual Heat Swords
+Dual Ichor
 Dual Kamas
 Dual Raza
 Dual Skana
 Dual Zoren
+Ether Daggers
 Ether Reaper
 Ether Sword
 Fang
@@ -125,6 +140,7 @@ Galentine
 Glaive
 Gram
 Halikar
+Hate
 Heat Dagger
 Jag Kittag
 Kama
@@ -230,6 +246,7 @@ Vauban
 Volt
 Wukong
 Zephyr
+
 //PRIME ASS
 Ash Prime
 Ember Prime
@@ -246,3 +263,5 @@ Trinity Prime
 Valkyr Prime
 Vauban Prime
 Volt Prime
+
+//SENTINELS

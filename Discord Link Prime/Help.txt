@@ -1,16 +1,6 @@
 ﻿Link Prime Help and Command List
 
 To start, use wf[<Warframe Item>] and insert the name of any Warframe weapon or warframe you can think of (case-sensitive). More features added soon!
-//COMMANDS GO HERE
+//ALT COMMANDS GO HERE
 [link <Warframe Item>]
-Links an image of a Warframe weapon or warframe. (Alias: warframe, l)
 wf[<Warframe Item>]
-Links an image of a Warframe weapon or warframe. Can be used mid-sentence.
-[donate]
-Donate to the author (me) via paypal!
-[help]
-Shows this helpful menu.
-[info]
-Displays information about this bot.
-[invite]
-Invite Link Prime to your server!

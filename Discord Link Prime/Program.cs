@@ -1,6 +1,7 @@
 ﻿using Discord;
 using Discord.WebSocket;
 using Discord.Commands;
+using Newtonsoft.Json;
 using System;
 using System.Threading.Tasks;
 using System.Collections.Generic;
@@ -12,11 +13,15 @@ using System.Linq;
 namespace Discord_Link_Prime {
     class Program {
 
-        DiscordSocketClient bot;
+        public DiscordSocketClient bot { get; set; }
         CommandService commands;
         DependencyMap map;
 
         public static string[] warframeArray;
+        public static string[] commandNames;
+        public static string[] commandSummaries;
+        public static BotStats loadedStats;
+        public static int currentUptime;
 
         static void Main(string[] args) => new Program().Start().GetAwaiter().GetResult();
         //Main shit down here
@@ -27,7 +32,31 @@ namespace Discord_Link_Prime {
             commands = new CommandService();
             map = new DependencyMap();
 
+            //Appdata Roaming Folder 
+            string dataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string specificFolder = Path.Combine(dataFolder, "Discord Link Prime");
+            if (!Directory.Exists(specificFolder))
+                Directory.CreateDirectory(specificFolder);
+
+            //Stats json
+            string statsPath = Path.Combine(specificFolder, @"stats.json");
+            if (!File.Exists(statsPath)) {
+                Console.WriteLine("Stats file not found, creating...");
+                BotStats botStats = new BotStats();
+                botStats.serversJoined = 0;
+                botStats.totalUptime = 0;
+                string initialStats = JsonConvert.SerializeObject(botStats);
+                File.WriteAllText(statsPath, initialStats);
+                loadedStats = JsonConvert.DeserializeObject<BotStats>(File.ReadAllText(statsPath));
+            }
+            else {
+                Console.WriteLine("Stats file found! Loading...");
+                loadedStats = JsonConvert.DeserializeObject<BotStats>(File.ReadAllText(statsPath));
+                Console.WriteLine("Servers Joined: " + loadedStats.serversJoined + "\nTotal uptime in minutes: " + loadedStats.totalUptime);
+            }
+
             await InstallCommands();
+            AttachListeners();
 
             //Warframe database setup
             List<string> wepList = new List<string>();
@@ -64,6 +93,7 @@ namespace Discord_Link_Prime {
             Console.WriteLine("The Void Relic has been cracked open. Add Link Prime via\nhttps://discordapp.com/oauth2/authorize?client_id=276370292052459523&scope=bot&permissions=35840");
 
 #endif
+            StatTimer.TimeStats();
             await bot.SetGameAsync("[help] for help");
 
             await Task.Delay(-1);
@@ -74,6 +104,15 @@ namespace Discord_Link_Prime {
             bot.MessageReceived += HandleCommand;
             // Discover all of the commands in this assembly and load them.
             await commands.AddModulesAsync(Assembly.GetEntryAssembly());
+            //Add command infomation
+            List<string> cmdList = new List<string>();
+            List<string> sumList = new List<string>();
+            foreach (CommandInfo cmdInfo in commands.Commands) {
+                cmdList.Add(cmdInfo.Name);
+                sumList.Add(cmdInfo.Summary);
+            }
+            commandNames = cmdList.ToArray();
+            commandSummaries = sumList.ToArray();
         }
 
         public async Task HandleCommand(SocketMessage messageParam) {
@@ -107,6 +146,32 @@ namespace Discord_Link_Prime {
 #endif
             }
             
+        }
+
+        //Listeners
+        private void AttachListeners() {
+            bot.JoinedGuild += JoinedGuildHandler;
+            bot.LeftGuild += LeftGuildHandler;
+        }
+
+        public async Task JoinedGuildHandler(SocketGuild guild) {
+            loadedStats.serversJoined++;
+            WriteStats();
+        }
+
+        public async Task LeftGuildHandler(SocketGuild guild) {
+            if (loadedStats.serversJoined > 0) {
+                loadedStats.serversJoined--;
+            }
+            WriteStats();
+        }
+
+        public static void WriteStats() {
+            string dataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string specificFolder = Path.Combine(dataFolder, "Discord Link Prime");
+            string statsPath = Path.Combine(specificFolder, @"stats.json");
+            string newStats = JsonConvert.SerializeObject(loadedStats);
+            File.WriteAllText(statsPath, newStats);
         }
     }
 }
