@@ -24,9 +24,20 @@ namespace Discord_Link_Prime {
                     foundWeapon = true;
                     break;
                 }
+
             }
             if (!foundWeapon) {
-                await Context.Channel.SendMessageAsync("Sorry, that item cannot be linked to.");
+                if (itemName == "John Prodman]") {
+                    await Context.Channel.SendMessageAsync("The man, the myth, the legend.");
+                    foundWeapon = true;
+                }
+                else if (itemName == "Clem]") {
+                    await Context.Channel.SendMessageAsync("He's a special guy, you know. Little weird but a hell of a fighter.");
+                    foundWeapon = true;
+                }
+                else {
+                    await Context.Channel.SendMessageAsync("Sorry, that item cannot be linked to.");
+                }
             }
         }
     }
@@ -39,7 +50,7 @@ namespace Discord_Link_Prime {
             string[] cmdList = File.ReadLines(helpPath).Skip(4).ToArray();
             EmbedBuilder helpBuilder = new EmbedBuilder() {
                 Author = new EmbedAuthorBuilder() {
-                    Name = "Link Prime A1.0.6 Help",
+                    Name = "Link Prime A1.0.7 Help",
                     IconUrl = "http://i.imgur.com/MG0pc7Q.png",
                 },
                 Description = string.Join("\n", helpDesc),
@@ -96,11 +107,11 @@ namespace Discord_Link_Prime {
         public async Task Stats() {
             TimeSpan convertedUpTime = TimeSpan.FromMinutes(Program.currentUptime);
             TimeSpan convertedTotalUpTime = TimeSpan.FromMinutes(Program.loadedStats.totalUptime);
-            string convertedUpTimeString = string.Format("{0}hrs {1:00}mins", convertedUpTime.Hours, convertedUpTime.Minutes);
-            string convertedTotalUpTimeString = string.Format("{0}hrs {1:00} mins", convertedTotalUpTime.Hours, convertedTotalUpTime.Minutes);
+            string convertedUpTimeString = string.Format("{0:d'days 'h'hrs 'mm'mins'}", convertedUpTime);
+            string convertedTotalUpTimeString = string.Format("{0:d'days 'h'hrs 'mm'mins'}", convertedTotalUpTime);
             EmbedBuilder statsBuilder = new EmbedBuilder() {
                 Author = new EmbedAuthorBuilder() {
-                    Name = "Link Prime A1.0.6 Stats",
+                    Name = "Link Prime A1.07 Stats",
                     IconUrl = "http://i.imgur.com/MG0pc7Q.png",
                 },
                 Description = "Here's some interesting numbers! Last stat reset: 9/Feb/2017",

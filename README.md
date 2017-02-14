@@ -1,4 +1,4 @@
-#Link Prime Alpha A1.0.6
+#Link Prime Alpha A1.0.7
 Designed by Blocker226#2438
 
 .NET Framework 4.6 (Discord.Net 1.0.0)
@@ -13,4 +13,4 @@ Hosted in Singapore 24/7 via Amazon EC2
 For a list of commands, use [help].
 
 ### Donate ###
-If you like Link Prime, do consider donating: https://www.paypal.me/Blocker226
+If you like Link Prime, do consider donating to keep it alive: https://www.paypal.me/Blocker226

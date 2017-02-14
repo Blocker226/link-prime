@@ -40,6 +40,7 @@ MK1-Strun
 Mutalist Cernos
 Mutalist Quanta
 Opticor
+Ogris
 Panthera
 Paracyst
 Paris
@@ -49,6 +50,7 @@ Penta
 Phage
 Quanta
 Rakta Cernos
+Sancti Tigris
 Sobek
 Soma
 Strun
@@ -61,6 +63,7 @@ Tonkor
 Vectis
 Velocitus
 Vulkar
+Zarr
 Zhuge
 
 //Secondaries
@@ -107,6 +110,7 @@ Seer
 Sicarus
 Stug
 Twin Gremlins
+Twin Kohmak
 Twin Vipers
 Tysis
 Vaykor Marelok
@@ -167,6 +171,7 @@ Scindo
 Serro
 Silva and Aegis
 Skana
+Sydon
 Telos Boltace
 Tipedo
 Tonbo

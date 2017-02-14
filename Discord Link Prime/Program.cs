@@ -22,6 +22,7 @@ namespace Discord_Link_Prime {
         public static string[] commandSummaries;
         public static BotStats loadedStats;
         public static int currentUptime;
+        static string statsPath;
 
         static void Main(string[] args) => new Program().Start().GetAwaiter().GetResult();
         //Main shit down here
@@ -39,7 +40,11 @@ namespace Discord_Link_Prime {
                 Directory.CreateDirectory(specificFolder);
 
             //Stats json
-            string statsPath = Path.Combine(specificFolder, @"stats.json");
+#if DEBUG
+            statsPath = Path.Combine(specificFolder, @"Teststats.json");
+#else
+            statsPath = Path.Combine(specificFolder, @"stats.json");
+#endif
             if (!File.Exists(statsPath)) {
                 Console.WriteLine("Stats file not found, creating...");
                 BotStats botStats = new BotStats();
@@ -91,7 +96,6 @@ namespace Discord_Link_Prime {
             await bot.LoginAsync(TokenType.Bot, token);
             await bot.ConnectAsync();
             Console.WriteLine("The Void Relic has been cracked open. Add Link Prime via\nhttps://discordapp.com/oauth2/authorize?client_id=276370292052459523&scope=bot&permissions=35840");
-
 #endif
             StatTimer.TimeStats();
             await bot.SetGameAsync("[help] for help");
@@ -169,9 +173,11 @@ namespace Discord_Link_Prime {
         public static void WriteStats() {
             string dataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             string specificFolder = Path.Combine(dataFolder, "Discord Link Prime");
-            string statsPath = Path.Combine(specificFolder, @"stats.json");
             string newStats = JsonConvert.SerializeObject(loadedStats);
             File.WriteAllText(statsPath, newStats);
+#if DEBUG
+            Console.WriteLine("Stats updated!");
+#endif
         }
     }
 }
