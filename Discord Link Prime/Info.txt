@@ -4,5 +4,3 @@
 Discord's prime method of retrieving Warframe information (I hope).
 For a list of commands, use [help].
 If you'd like to donate to the author (aww!) use [donate].
-
-Version: 1.0.7 Alpha

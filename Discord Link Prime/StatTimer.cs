@@ -7,7 +7,7 @@ namespace Discord_Link_Prime {
 
         public static void TimeStats () {
 #if DEBUG
-            Console.WriteLine("Timer Started");
+            Program.LogLine("Timer Started");
 #endif
             upTime = new Timer(_ =>
             {
@@ -15,7 +15,7 @@ namespace Discord_Link_Prime {
                 Program.loadedStats.totalUptime += 1;
                 Program.WriteStats();
 #if DEBUG
-                Console.WriteLine(string.Format("{0}hrs {1:00}mins", Program.currentUptime / 60, Program.currentUptime));
+                Program.LogLine(string.Format("{0}hrs {1:00}mins", Program.currentUptime / 60, Program.currentUptime));
 #endif
             },
             null,

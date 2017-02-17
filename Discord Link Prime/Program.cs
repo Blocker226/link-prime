@@ -17,6 +17,8 @@ namespace Discord_Link_Prime {
         CommandService commands;
         DependencyMap map;
 
+        public static string versionNumber = "A1.0.71";
+
         public static string[] warframeArray;
         public static string[] commandNames;
         public static string[] commandSummaries;
@@ -46,7 +48,7 @@ namespace Discord_Link_Prime {
             statsPath = Path.Combine(specificFolder, @"stats.json");
 #endif
             if (!File.Exists(statsPath)) {
-                Console.WriteLine("Stats file not found, creating...");
+                LogLine("Stats file not found, creating...", "WARNING   ");
                 BotStats botStats = new BotStats();
                 botStats.serversJoined = 0;
                 botStats.totalUptime = 0;
@@ -55,9 +57,9 @@ namespace Discord_Link_Prime {
                 loadedStats = JsonConvert.DeserializeObject<BotStats>(File.ReadAllText(statsPath));
             }
             else {
-                Console.WriteLine("Stats file found! Loading...");
+                LogLine("Stats file found! Loading...");
                 loadedStats = JsonConvert.DeserializeObject<BotStats>(File.ReadAllText(statsPath));
-                Console.WriteLine("Servers Joined: " + loadedStats.serversJoined + "\nTotal uptime in minutes: " + loadedStats.totalUptime);
+                LogLine("Servers Joined: " + loadedStats.serversJoined + "\nTotal uptime in minutes: " + loadedStats.totalUptime);
             }
 
             await InstallCommands();
@@ -72,7 +74,7 @@ namespace Discord_Link_Prime {
                     continue;
                 }
                 else {
-                    wepList.Add(line);
+                    wepList.Add(line.ToUpper());
                 }
             }
             warframeArray = wepList.ToArray();
@@ -90,12 +92,12 @@ namespace Discord_Link_Prime {
             token = File.ReadLines(tokenPath).Skip(3).Take(1).First();
             await bot.LoginAsync(TokenType.Bot, token);
             await bot.ConnectAsync();
-            Console.WriteLine("We are getting closer. Accept this small token as appreciation for your efforts. Add Link Vandal via\nhttps://discordapp.com/oauth2/authorize?client_id=276656859270873088&scope=bot&permissions=35840");
+            LogLine("We are getting closer. Accept this small token as appreciation for your efforts. Add Link Vandal via\nhttps://discordapp.com/oauth2/authorize?client_id=276656859270873088&scope=bot&permissions=52224");
 #else
             token = File.ReadLines(tokenPath).Skip(1).Take(1).First();
             await bot.LoginAsync(TokenType.Bot, token);
             await bot.ConnectAsync();
-            Console.WriteLine("The Void Relic has been cracked open. Add Link Prime via\nhttps://discordapp.com/oauth2/authorize?client_id=276370292052459523&scope=bot&permissions=35840");
+            LogLine("The Void Relic has been cracked open. Add Link Prime via\nhttps://discordapp.com/oauth2/authorize?client_id=276370292052459523&scope=bot&permissions=52224");
 #endif
             StatTimer.TimeStats();
             await bot.SetGameAsync("[help] for help");
@@ -134,11 +136,11 @@ namespace Discord_Link_Prime {
                 // rather an object stating if the command executed succesfully)
                 result = await commands.ExecuteAsync(context, argPos, map);
             }
-            else if((message.Content.Contains("wf[") && message.Content.Contains("]"))) {
+            else if((message.Content.Contains("wf[") && message.Content.Contains("]")) && !(message.Content.Contains("```wf[") && message.Content.Contains("]```"))) {
                 var commandRegex = new Regex(@"\[(.*?)\]");
                 var commandMatches = commandRegex.Matches(message.Content);
                 string[] commandInput = commandMatches.OfType<Match>().Select(m => m.Groups[1].Value).ToArray();
-                //Console.WriteLine(commandInput[0]);
+                //LogLine(commandInput[0]);
                 result = await commands.ExecuteAsync(context, "link " + commandInput[0] + "]");
             }
             else {
@@ -161,6 +163,8 @@ namespace Discord_Link_Prime {
         public async Task JoinedGuildHandler(SocketGuild guild) {
             loadedStats.serversJoined++;
             WriteStats();
+            IDMChannel dmChannel = await bot.GetGuild(276372931259531265).GetUser(232475108503977995).CreateDMChannelAsync();
+            await dmChannel.SendMessageAsync("Link Prime has been added to " + guild.Name + "! Rejoice!");
         }
 
         public async Task LeftGuildHandler(SocketGuild guild) {
@@ -168,6 +172,8 @@ namespace Discord_Link_Prime {
                 loadedStats.serversJoined--;
             }
             WriteStats();
+            IDMChannel dmChannel = await bot.GetGuild(276372931259531265).GetUser(232475108503977995).CreateDMChannelAsync();
+            await dmChannel.SendMessageAsync("Link Prime has been removed from " + guild.Name + "! Noooo!");
         }
 
         public static void WriteStats() {
@@ -176,8 +182,14 @@ namespace Discord_Link_Prime {
             string newStats = JsonConvert.SerializeObject(loadedStats);
             File.WriteAllText(statsPath, newStats);
 #if DEBUG
-            Console.WriteLine("Stats updated!");
+            LogLine("Stats updated!");
 #endif
+        }
+
+        public static void LogLine(string msg, string tag = "Info      ") {
+            //tag must be 7 characters + 3 spaces long
+            msg = msg.Replace("\n", "\n                   ");
+            Console.WriteLine(DateTime.Now.ToString("HH:mm:ss") + " " + tag + msg);
         }
     }
 }

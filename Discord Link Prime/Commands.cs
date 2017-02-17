@@ -12,9 +12,9 @@ namespace Discord_Link_Prime {
         public async Task SearchWF([Remainder, Summary("Warframe item name")] string itemName) {
             bool foundWeapon = false;
             for (int i = 0; i < Program.warframeArray.Length; i++) {
-                if (itemName == Program.warframeArray[i] + "]") {
+                if (itemName.ToUpper() == Program.warframeArray[i] + "]") {
                     string path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Images\" + Program.warframeArray[i] + ".png");
-                    //Console.WriteLine(path);
+                    //Program.LogLine(path);
                     if (File.Exists(path)) {
                         await Context.Channel.SendFileAsync(path);
                     }
@@ -35,7 +35,7 @@ namespace Discord_Link_Prime {
                     await Context.Channel.SendMessageAsync("He's a special guy, you know. Little weird but a hell of a fighter.");
                     foundWeapon = true;
                 }
-                else {
+                else if (itemName != "]"){
                     await Context.Channel.SendMessageAsync("Sorry, that item cannot be linked to.");
                 }
             }
@@ -50,7 +50,7 @@ namespace Discord_Link_Prime {
             string[] cmdList = File.ReadLines(helpPath).Skip(4).ToArray();
             EmbedBuilder helpBuilder = new EmbedBuilder() {
                 Author = new EmbedAuthorBuilder() {
-                    Name = "Link Prime A1.0.7 Help",
+                    Name = "Link Prime " + Program.versionNumber + " Help",
                     IconUrl = "http://i.imgur.com/MG0pc7Q.png",
                 },
                 Description = string.Join("\n", helpDesc),
@@ -82,7 +82,7 @@ namespace Discord_Link_Prime {
                 ThumbnailUrl = "http://i.imgur.com/MG0pc7Q.png",
                 Description = File.ReadAllText(infoPath),
                 Color = new Color(250, 246, 122),
-            };
+            }.AddField(x=> { x.WithName("Version"); x.WithValue(Program.versionNumber); });
             await Context.Channel.SendMessageAsync("\u200B", false, infoBuilder);
         }
     }
@@ -98,7 +98,7 @@ namespace Discord_Link_Prime {
         [Command("invite]"), Summary("Invite Link Prime to your server!")]
         public async Task Invite() {
             IDMChannel dmChannel = await Context.User.CreateDMChannelAsync();
-            await dmChannel.SendMessageAsync("\u200BThe Void Relic has been cracked open. Add Link Prime via\nhttps://discordapp.com/oauth2/authorize?client_id=276370292052459523&scope=bot&permissions=35840");
+            await dmChannel.SendMessageAsync("\u200BThe Void Relic has been cracked open. Add Link Prime via\nhttps://discordapp.com/oauth2/authorize?client_id=276370292052459523&scope=bot&permissions=52224");
         }
     }
 
@@ -111,7 +111,7 @@ namespace Discord_Link_Prime {
             string convertedTotalUpTimeString = string.Format("{0:d'days 'h'hrs 'mm'mins'}", convertedTotalUpTime);
             EmbedBuilder statsBuilder = new EmbedBuilder() {
                 Author = new EmbedAuthorBuilder() {
-                    Name = "Link Prime A1.07 Stats",
+                    Name = "Link Prime " + Program.versionNumber + " Stats",
                     IconUrl = "http://i.imgur.com/MG0pc7Q.png",
                 },
                 Description = "Here's some interesting numbers! Last stat reset: 9/Feb/2017",
