@@ -1,43 +1,203 @@
 ﻿using Discord;
 using Discord.Commands;
+using Discord.Addons.InteractiveCommands;
 using System;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using Discord.Rest;
 
 namespace Discord_Link_Prime {
     public class SearchWarframe : ModuleBase {
+        //Message ID for react reaction
+        ulong displayID;
+        string lastImage;
+
         [Command("link"), Summary("Links a Warframe weapon or Warframe as an image."), Alias("warframe", "l")]
         public async Task SearchWF([Remainder, Summary("Warframe item name")] string itemName) {
-            bool foundWeapon = false;
-            for (int i = 0; i < Program.warframeArray.Length; i++) {
-                if (itemName.ToUpper() == Program.warframeArray[i] + "]") {
-                    string path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Images\" + Program.warframeArray[i] + ".png");
-                    //Program.LogLine(path);
-                    if (File.Exists(path)) {
-                        await Context.Channel.SendFileAsync(path);
-                    }
-                    else {
-                        await Context.Channel.SendMessageAsync("Sorry, there's no image available for this item.");
-                    }
-                    foundWeapon = true;
-                    break;
-                }
 
+            System.Globalization.TextInfo nameConverter = new System.Globalization.CultureInfo("en-US", false).TextInfo;
+            itemName = nameConverter.ToTitleCase(itemName);
+            if (Program.weaponArray != null) {
+                //First search weapons
+                for (int i = 0; i < Program.weaponArray.Length; i++) {
+                    if (itemName == Program.weaponArray[i].name + "]") {
+                        EmbedBuilder itemBuilder = new EmbedBuilder() {
+                            Author = new EmbedAuthorBuilder() {
+                                Name = Program.weaponArray[i].name
+                            },
+                            ThumbnailUrl = Program.weaponArray[i].iconURL,
+                            Description = Program.weaponArray[i].description,
+                            Color = new Color(250, 246, 122),
+                        }.AddField(x => { x.WithName("Type"); x.WithValue(Program.weaponArray[i].type); });
+                        IMessage sentMsg = await Context.Channel.SendMessageAsync("", false, itemBuilder);
+
+                        //Setup reaction listener
+                        displayID = sentMsg.Id;
+                        lastImage = Program.weaponArray[i].iconURL;
+                        var theMsg = (RestUserMessage)await sentMsg.Channel.GetMessageAsync(sentMsg.Id);
+                        Program.bot.ReactionAdded += Bot_ReactionAdded;
+                        await theMsg.AddReactionAsync("🔍");
+                        return;
+                    }
+                }
             }
-            if (!foundWeapon) {
-                if (itemName == "John Prodman]") {
-                    await Context.Channel.SendMessageAsync("The man, the myth, the legend.");
-                    foundWeapon = true;
+            if (Program.warframeArray != null) {
+                //Second search warframes
+                for (int i = 0; i < Program.warframeArray.Length; i++) {
+                    if (itemName == Program.warframeArray[i].name + "]") {
+                        EmbedBuilder itemBuilder = new EmbedBuilder() {
+                            Author = new EmbedAuthorBuilder() {
+                                Name = Program.warframeArray[i].name
+                            },
+                            ThumbnailUrl = Program.warframeArray[i].iconURL,
+                            Description = Program.warframeArray[i].description,
+                            Color = new Color(250, 246, 122),
+                        }.AddField(x => { x.WithName("Armour"); x.WithValue(Program.warframeArray[i].maxArmour.ToString()); })
+                        .AddField(x => { x.WithName("Health"); x.WithValue(Program.warframeArray[i].maxHealth.ToString()); });
+                        IMessage sentMsg = await Context.Channel.SendMessageAsync("", false, itemBuilder);
+
+                        //Setup reaction listener
+                        displayID = sentMsg.Id;
+                        lastImage = Program.warframeArray[i].iconURL;
+                        var theMsg = (RestUserMessage)await sentMsg.Channel.GetMessageAsync(sentMsg.Id);
+                        Program.bot.ReactionAdded += Bot_ReactionAdded;
+                        await theMsg.AddReactionAsync("🔍");
+                        return;
+                    }
                 }
-                else if (itemName == "Clem]") {
-                    await Context.Channel.SendMessageAsync("He's a special guy, you know. Little weird but a hell of a fighter.");
-                    foundWeapon = true;
+            }
+            if (Program.companionArray != null) {
+                //Third search companions
+                for (int i = 0; i < Program.companionArray.Length; i++) {
+                    if (itemName == Program.companionArray[i].name + "]") {
+                        EmbedBuilder itemBuilder = new EmbedBuilder() {
+                            Author = new EmbedAuthorBuilder() {
+                                Name = Program.companionArray[i].name
+                            },
+                            ThumbnailUrl = Program.companionArray[i].iconURL,
+                            Description = Program.companionArray[i].description,
+                            Color = new Color(250, 246, 122),
+                        }.AddField(x => { x.WithName("Armour"); x.WithValue(Program.companionArray[i].maxArmour.ToString()); })
+                        .AddField(x => { x.WithName("Health"); x.WithValue(Program.companionArray[i].maxHealth.ToString()); });
+                        IMessage sentMsg = await Context.Channel.SendMessageAsync("", false, itemBuilder);
+
+                        //Setup reaction listener
+                        displayID = sentMsg.Id;
+                        lastImage = Program.companionArray[i].iconURL;
+                        var theMsg = (RestUserMessage)await sentMsg.Channel.GetMessageAsync(sentMsg.Id);
+                        Program.bot.ReactionAdded += Bot_ReactionAdded;
+                        await theMsg.AddReactionAsync("🔍");
+                        return;
+                    }
                 }
-                else if (itemName != "]"){
-                    await Context.Channel.SendMessageAsync("Sorry, that item cannot be linked to.");
+            }
+            if (Program.modArray != null) {
+                //Fourth search mods
+                for (int i = 0; i < Program.modArray.Length; i++) {
+                    if (itemName == Program.modArray[i].name + "]") {
+                        System.Drawing.Color convertedColor = System.Drawing.ColorTranslator.FromHtml(GetEnumDescription(Program.modArray[i].rarity));
+                        EmbedBuilder itemBuilder = new EmbedBuilder() {
+                            Author = new EmbedAuthorBuilder() {
+                                Name = Program.modArray[i].name
+                            },
+                            ThumbnailUrl = Program.modArray[i].iconURL,
+                            Description = Program.modArray[i].description,
+                            Color = new Color(convertedColor.R, convertedColor.G, convertedColor.B),
+                        }.AddField(x => { x.WithName("Drain"); x.WithValue(Program.modArray[i].maxDrain.ToString()); })
+                        .AddField(x => { x.WithName("Fusion Level"); x.WithValue(Program.modArray[i].maxRanks.ToString()); });
+                        IMessage sentMsg = await Context.Channel.SendMessageAsync("", false, itemBuilder);
+
+                        //Setup reaction listener
+                        displayID = sentMsg.Id;
+                        lastImage = Program.modArray[i].iconURL;
+                        var theMsg = (RestUserMessage)await sentMsg.Channel.GetMessageAsync(sentMsg.Id);
+                        Program.bot.ReactionAdded += Bot_ReactionAdded;
+                        await theMsg.AddReactionAsync("🔍");
+                        return;
+                    }
                 }
+            }
+            if (itemName == "John Prodman]") {
+                await Context.Channel.SendMessageAsync("The man, the myth, the legend.");
+            }
+            else if (itemName == "Clem]") {
+                await Context.Channel.SendMessageAsync("He's a special guy, you know. Little weird but a hell of a fighter.");
+            }
+            else if (itemName != "]") {
+                await Context.Channel.SendMessageAsync("Sorry, that item cannot be linked to.");
+            }
+
+        }
+
+        private async Task Bot_ReactionAdded(Cacheable<IUserMessage, ulong> message, Discord.WebSocket.ISocketMessageChannel channel, Discord.WebSocket.SocketReaction reaction) {
+            if (message.Id == displayID && reaction.Emoji.Name == "🔍" && reaction.UserId != 276656859270873088) {
+                //This is our message
+                await Context.Channel.SendMessageAsync("Imgur: " + lastImage);
+            }
+
+        }
+
+        public static string GetEnumDescription(Enum value) {
+            FieldInfo fi = value.GetType().GetField(value.ToString());
+
+            DescriptionAttribute[] attributes =
+                (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
+
+            if (attributes != null && attributes.Length > 0)
+                return attributes[0].Description;
+            else
+                return value.ToString();
+        }
+    }
+
+    public class cmdContrib : InteractiveModuleBase {
+        [Command("contrib]", RunMode = RunMode.Async), Summary("Contribute to Link Prime's database!")]
+        public async Task Contribute(string subCommand, string sCmdArg1 = null, string sCmdArg2 = null, string sCmdArg3 = null) {
+            System.Globalization.TextInfo nameConverter = new System.Globalization.CultureInfo("en-US", false).TextInfo;
+            //Wizard Academy trains magicians in the art of warframe item creation
+            WizardAcademy wizardAcademy = new WizardAcademy();
+            switch (subCommand) {
+                case "new":
+                case "add":
+                    if (sCmdArg1 == null || sCmdArg2 == null) {
+                        await Context.Channel.SendMessageAsync("Insufficient parameters. Syntax: \"[contrib] add <type> <name>\"");
+                        return;
+                    }
+                    await wizardAcademy.CreateNewEntry(sCmdArg1, nameConverter.ToTitleCase(sCmdArg2), sCmdArg3);
+                    break;
+                case "edit":
+                    if (sCmdArg1 == null || sCmdArg1 == "") {
+                        await Context.Channel.SendMessageAsync("Editing existing item, please specify a name");
+                        IUserMessage response = await WaitForMessage(Context.Message.Author, Context.Channel);
+                        sCmdArg1 = response.Content;
+                    }
+                    await wizardAcademy.EditEntry(nameConverter.ToTitleCase(sCmdArg1), sCmdArg2, sCmdArg3);
+                    break;
+                case "delete":
+                    if (Context.Message.Author.Id == 232475108503977995) {
+                        await Context.Channel.SendMessageAsync("Deleting existing item, please specify a name.");
+                        IUserMessage response = await WaitForMessage(Context.Message.Author, Context.Channel);
+                        wizardAcademy.DeleteEntry(response.Content);
+                    }
+                    break;
+                case "help":
+                    string contribHelpPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"ContribHelp.txt");
+                    EmbedBuilder contribBuilder = new EmbedBuilder() {
+                        Author = new EmbedAuthorBuilder() {
+                            Name = "Link Prime Contributor Help",
+                        },
+                        ThumbnailUrl = "http://i.imgur.com/MG0pc7Q.png",
+                        Description = File.ReadAllText(contribHelpPath),
+                        Color = new Color(250, 246, 122),
+                    }.AddField(x => { x.WithName("List of somethings"); x.WithValue("yo its mi"); });
+                    IDMChannel dmChannel = await Context.User.CreateDMChannelAsync();
+                    await ReplyAsync("Inbox message awaits the Operator. Check your DM for help.");
+                    await dmChannel.SendMessageAsync("", false, contribBuilder);
+                    break;
             }
         }
     }
@@ -66,7 +226,7 @@ namespace Discord_Link_Prime {
                     helpBuilder.AddField(x => { x.WithName("[" + Program.commandNames[i]); x.WithValue(Program.commandSummaries[i]); });
                 }
             }
-            await Context.Channel.SendMessageAsync("\u200B", false, helpBuilder);
+            await Context.Channel.SendMessageAsync("", false, helpBuilder);
         }
     }
 
@@ -83,7 +243,7 @@ namespace Discord_Link_Prime {
                 Description = File.ReadAllText(infoPath),
                 Color = new Color(250, 246, 122),
             }.AddField(x=> { x.WithName("Version"); x.WithValue(Program.versionNumber); });
-            await Context.Channel.SendMessageAsync("\u200B", false, infoBuilder);
+            await Context.Channel.SendMessageAsync("", false, infoBuilder);
         }
     }
 
