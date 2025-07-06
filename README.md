@@ -8,7 +8,7 @@ Discord's prime method of retrieving Warframe information (I hope). Link Prime i
 
 ~~Hosted in Singapore 24/7 via Amazon EC2~~ Bot has been sunset and its functionality has been rolled into https://genesis.warframestat.us/
 
-**[Invite Link Prime to your Discord Server](https://discordapp.com/oauth2/authorize?client_id=276370292052459523&scope=bot&permissions=35840)**
+**[Invite Link Prime to your Discord Server]**
 
 For a list of commands, use [help].
 
